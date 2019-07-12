@@ -67,5 +67,5 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
-# Varios
+# Various
 .DS_Store
