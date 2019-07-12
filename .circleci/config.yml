@@ -16,11 +16,13 @@ jobs:
             - "./Carthage"
       - run:
           name: execute tests
-          command: fastlane scan --scheme "Unleash" --device "iPhone X" --clean
+          command: |
+            mkdir -p ~/test-results/xctest/
+            fastlane scan --scheme "Unleash" --device "iPhone X" --clean --output_directory="~/test-results/xctest/" --output_types="junit" --output_files="junit.xml"
       - store_test_results:
-          path: /tmp/test-results
+          path: ~/test-results
       - store_artifacts:
-          path: /tmp/test-results
+          path: ~/test-results
           destination: scan-test-results
       - store_artifacts:
           path: ~/Library/Logs/scan
