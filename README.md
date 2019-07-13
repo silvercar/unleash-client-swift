@@ -10,5 +10,5 @@ Quickstart:
 
 ```
 brew install carthage
-carthage update --platform iOS --use-submodules --no-use-binaries
+carthage update --platform iOS --no-use-binaries
 ```
