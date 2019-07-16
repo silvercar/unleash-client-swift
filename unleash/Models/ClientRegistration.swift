@@ -17,6 +17,7 @@ final class ClientRegistration: Codable {
     
     init(appName: String, strategies: [Strategy]) {
         self.appName = appName
+        // TODO: This shouldn't be re-generated per instance of the library, need to store this value and re-use 
         self.instanceId = UUID().uuidString
         self.sdkVersion = "unleash-client-ios:\(AppInfo.shortVersion)"
         self.strategies = strategies.map { $0.getName() }
