@@ -35,12 +35,31 @@ public class Unleash {
         self.refreshInterval = refreshInterval
         self.strategies = strategies
         
+        register()
+    }
+    
+    private func register() {
         let body: ClientRegistration = ClientRegistration(appName: appName, strategies: strategies)
-        registerService.register(url: URL(string: self.url)!, body: body)
-            .done {_ in
-            }.catch {error in
-                print("error \(error)")
+        attempt(maximumRetryCount: 3, delayBeforeRetry: .seconds(60)) {
+            self.registerService.register(url: URL(string: self.url)!, body: body)
+        }.done {_ in
+        }.catch {error in
+            debugPrint("error \(error)")
         }
+    }
+    
+    private func attempt<T>(maximumRetryCount: Int,
+                            delayBeforeRetry: DispatchTimeInterval,
+                            _ body: @escaping () -> Promise<T>) -> Promise<T> {
+        var attempts = 0
+        func attempt() -> Promise<T> {
+            attempts += 1
+            return body().recover { error -> Promise<T> in
+                guard attempts < maximumRetryCount else { throw error }
+                return after(delayBeforeRetry).then(on: nil, attempt)
+            }
+        }
+        return attempt()
     }
     
     public func isEnabled(name: String) -> Bool {
