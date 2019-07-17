@@ -5,6 +5,14 @@ jobs:
       xcode: "10.2.0"
     steps:
       - checkout
+      - run:
+          name: Install Danger
+          command: |
+            sudo gem install danger
+            if (brew outdated | grep carthage > /dev/null); then brew upgrade carthage; fi
+      - run:
+          name: Run Danager
+          command: danger
       - restore_cache:
           key: carthage-v1--{{ checksum "Cartfile.resolved" }}
       - run:
