@@ -44,9 +44,10 @@ public class Unleash {
         let body: ClientRegistration = ClientRegistration(appName: appName, strategies: strategies)
         attempt(maximumRetryCount: 3, delayBeforeRetry: .seconds(60)) {
             self.registerService.register(url: URL(string: self.url)!, body: body)
-        }.done { _ in
+        }.done { response in
+            log("Unleash registered client \(body.instanceId) with response \(response ?? [:])")
         }.catch { error in
-            debugPrint("error \(error)")
+            log("error \(error)")
         }
     }
     
