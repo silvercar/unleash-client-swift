@@ -8,7 +8,7 @@
 import Foundation
 
 class DefaultStrategy : Strategy {
-    func getName() -> String {
+    var name: String {
         return "default"
     }
     

@@ -23,7 +23,7 @@ class DefaultStrategySpec: QuickSpec {
             context("when default initializer") {
                 it("returns default for name") {
                     // Act
-                    let result = strategy.getName()
+                    let result = strategy.name
                     
                     // Assert
                     expect(result).to(equal("default"))

@@ -41,16 +41,14 @@ class ClientRegistrationSpec: QuickSpec {
                     let result = ClientRegistration(appName: appName, strategies: strategies).strategies
                     
                     // Assert
-                    expect(result).to(contain(strategy.getName()))
+                    expect(result).to(contain(strategy.name))
                 }
             }
         }
     }
     
     class TestStrategy: Strategy {
-        func getName() -> String {
-            return "test strategy"
-        }
+        var name = "test strategy"
         
         func isEnabled(parameters: [String : String]) -> Bool {
             return false
