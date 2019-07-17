@@ -21,10 +21,12 @@ public class Unleash {
     public private(set) var refreshInterval: Int?
     public private(set) var strategies: [Strategy]
     
-    public convenience init(appName: String, url: String, refreshInterval: Int?, strategies: [Strategy]) {
+    public convenience init(appName: String, url: String, refreshInterval: Int?, strategies: [Strategy] = []) {
         let registerService: RegisterServiceProtocol = RegisterService()
+        let allStrategies: [Strategy] = [DefaultStrategy()] + strategies
+
         self.init(registerService: registerService, appName: appName, url: url, refreshInterval: refreshInterval,
-                  strategies: strategies)
+                  strategies: allStrategies)
     }
     
     init(registerService: RegisterServiceProtocol, appName: String, url: String, refreshInterval: Int?,
