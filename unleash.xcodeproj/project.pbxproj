@@ -16,6 +16,8 @@
 		9D1C642A22DE7E940069FD45 /* DefaultStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C642922DE7E940069FD45 /* DefaultStrategy.swift */; };
 		9D1C642B22DE7E940069FD45 /* DefaultStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C642922DE7E940069FD45 /* DefaultStrategy.swift */; };
 		9D1C642E22DE80220069FD45 /* DefaultStrategySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C642D22DE80220069FD45 /* DefaultStrategySpec.swift */; };
+		9D1C643022DEB5480069FD45 /* UnleashSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C642F22DEB5480069FD45 /* UnleashSpec.swift */; };
+		9D1C643322DEB88B0069FD45 /* RegisterServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C643222DEB88B0069FD45 /* RegisterServiceMock.swift */; };
 		9D2C1CA922D9155300721A2D /* Unleash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CA822D9155300721A2D /* Unleash.swift */; };
 		9D2C1CAA22D9155300721A2D /* Unleash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CA822D9155300721A2D /* Unleash.swift */; };
 		9D2C1CAD22D95B5F00721A2D /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; };
@@ -91,6 +93,8 @@
 		9D1C642322DD10670069FD45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D1C642922DE7E940069FD45 /* DefaultStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DefaultStrategy.swift; path = unleash/Strategies/DefaultStrategy.swift; sourceTree = SOURCE_ROOT; };
 		9D1C642D22DE80220069FD45 /* DefaultStrategySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DefaultStrategySpec.swift; path = unleashTests/Strategies/DefaultStrategySpec.swift; sourceTree = SOURCE_ROOT; };
+		9D1C642F22DEB5480069FD45 /* UnleashSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashSpec.swift; path = unleashTests/UnleashSpec.swift; sourceTree = SOURCE_ROOT; };
+		9D1C643222DEB88B0069FD45 /* RegisterServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterServiceMock.swift; path = unleashTests/Services/RegisterServiceMock.swift; sourceTree = SOURCE_ROOT; };
 		9D2C1CA822D9155300721A2D /* Unleash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Unleash.swift; path = unleash/Unleash.swift; sourceTree = SOURCE_ROOT; };
 		9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
 		9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
@@ -171,6 +175,14 @@
 			path = Strategies;
 			sourceTree = "<group>";
 		};
+		9D1C643122DEB8780069FD45 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9D1C643222DEB88B0069FD45 /* RegisterServiceMock.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		9D2C1CC622D9853A00721A2D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,10 +257,12 @@
 		9DEA495A22D7EE8C006FB13A /* UnleashTests */ = {
 			isa = PBXGroup;
 			children = (
+				9D1C643122DEB8780069FD45 /* Services */,
 				9D1C642C22DE80090069FD45 /* Strategies */,
 				9D2C1CCA22D9877500721A2D /* Models */,
 				9DEA495D22D7EE8C006FB13A /* Info.plist */,
 				9D2C1CBF22D97B8000721A2D /* Date+ExtensionSpec.swift */,
+				9D1C642F22DEB5480069FD45 /* UnleashSpec.swift */,
 			);
 			path = UnleashTests;
 			sourceTree = "<group>";
@@ -427,6 +441,8 @@
 				9D2C1CB622D9784F00721A2D /* Date+Extension.swift in Sources */,
 				9D2C1CD022D99A0D00721A2D /* RegisterService.swift in Sources */,
 				9D2C1CC922D985A200721A2D /* ClientRegistration.swift in Sources */,
+				9D1C643022DEB5480069FD45 /* UnleashSpec.swift in Sources */,
+				9D1C643322DEB88B0069FD45 /* RegisterServiceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
