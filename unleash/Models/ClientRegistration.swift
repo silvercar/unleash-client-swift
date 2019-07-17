@@ -20,7 +20,7 @@ final class ClientRegistration: Codable {
         // TODO: This shouldn't be re-generated per instance of the library, need to store this value and re-use 
         self.instanceId = UUID().uuidString
         self.sdkVersion = "unleash-client-ios:\(AppInfo.shortVersion)"
-        self.strategies = strategies.map { $0.getName() }
+        self.strategies = strategies.map { $0.name }
         self.started = Date().iso8601DateString
         self.interval = 10_000
     }

@@ -10,7 +10,7 @@ import PMKFoundation
 import PromiseKit
 
 public protocol Strategy {
-    func getName() -> String
+    var name: String { get }
     func isEnabled(parameters: [String: String]) -> Bool
 }
 
