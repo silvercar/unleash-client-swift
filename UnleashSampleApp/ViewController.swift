@@ -13,10 +13,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let unleash = Unleash(appName: "rac-web-admin-dev",
-                              url: "https://unleash.silvercar.com/api",
-                              refreshInterval: 300000,
-                              strategies: [EnvironmentStrategy()])
+        _ = Unleash(appName: "rac-web-admin-dev",
+                    url: "https://unleash.silvercar.com/api",
+                    refreshInterval: 300000,
+                    strategies: [EnvironmentStrategy()])
     }
 }
 
