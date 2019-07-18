@@ -20,8 +20,8 @@ class ViewController: UIViewController {
     }
 }
 
-class EnvironmentStrategy: Strategy {
-    func getName() -> String {
+class EnvironmentStrategy: Strategy {    
+    var name: String {
         return "environment"
     }
     
