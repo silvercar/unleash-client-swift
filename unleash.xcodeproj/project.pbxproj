@@ -25,6 +25,20 @@
 		9D1C644E22DFB87A0069FD45 /* DebugLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C644D22DFB87A0069FD45 /* DebugLogger.swift */; };
 		9D1C644F22DFB87A0069FD45 /* DebugLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C644D22DFB87A0069FD45 /* DebugLogger.swift */; };
 		9D1C645022DFB87A0069FD45 /* DebugLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C644D22DFB87A0069FD45 /* DebugLogger.swift */; };
+		9D1C645822E0045D0069FD45 /* ToggleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C645722E0045D0069FD45 /* ToggleService.swift */; };
+		9D1C645922E0045D0069FD45 /* ToggleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C645722E0045D0069FD45 /* ToggleService.swift */; };
+		9D1C645B22E0D1530069FD45 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C645A22E0D1530069FD45 /* Feature.swift */; };
+		9D1C645C22E0D1530069FD45 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C645A22E0D1530069FD45 /* Feature.swift */; };
+		9D1C646122E0D5D50069FD45 /* VariantDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646022E0D5D50069FD45 /* VariantDefinition.swift */; };
+		9D1C646222E0D5D50069FD45 /* VariantDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646022E0D5D50069FD45 /* VariantDefinition.swift */; };
+		9D1C646422E0D5E70069FD45 /* ActivationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646322E0D5E70069FD45 /* ActivationStrategy.swift */; };
+		9D1C646522E0D5E70069FD45 /* ActivationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646322E0D5E70069FD45 /* ActivationStrategy.swift */; };
+		9D1C646722E0D7800069FD45 /* VariantOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646622E0D7800069FD45 /* VariantOverride.swift */; };
+		9D1C646822E0D7800069FD45 /* VariantOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646622E0D7800069FD45 /* VariantOverride.swift */; };
+		9D1C646A22E0D7D00069FD45 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646922E0D7D00069FD45 /* Payload.swift */; };
+		9D1C646B22E0D7D00069FD45 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646922E0D7D00069FD45 /* Payload.swift */; };
+		9D1C646D22E0E09D0069FD45 /* Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646C22E0E09D0069FD45 /* Features.swift */; };
+		9D1C646E22E0E09D0069FD45 /* Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646C22E0E09D0069FD45 /* Features.swift */; };
 		9D2C1CA922D9155300721A2D /* Unleash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CA822D9155300721A2D /* Unleash.swift */; };
 		9D2C1CAA22D9155300721A2D /* Unleash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CA822D9155300721A2D /* Unleash.swift */; };
 		9D2C1CAD22D95B5F00721A2D /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; };
@@ -107,6 +121,13 @@
 		9D1C644122DF92E80069FD45 /* RegisterServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterServiceSpec.swift; path = unleashTests/Services/RegisterServiceSpec.swift; sourceTree = SOURCE_ROOT; };
 		9D1C644322DF93900069FD45 /* ClientRegistrationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientRegistrationBuilder.swift; path = unleashTests/Models/ClientRegistrationBuilder.swift; sourceTree = SOURCE_ROOT; };
 		9D1C644D22DFB87A0069FD45 /* DebugLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DebugLogger.swift; path = unleash/DebugLogger.swift; sourceTree = SOURCE_ROOT; };
+		9D1C645722E0045D0069FD45 /* ToggleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToggleService.swift; path = unleash/Services/ToggleService.swift; sourceTree = SOURCE_ROOT; };
+		9D1C645A22E0D1530069FD45 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Feature.swift; path = unleash/Models/Feature.swift; sourceTree = SOURCE_ROOT; };
+		9D1C646022E0D5D50069FD45 /* VariantDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VariantDefinition.swift; path = unleash/Models/VariantDefinition.swift; sourceTree = SOURCE_ROOT; };
+		9D1C646322E0D5E70069FD45 /* ActivationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivationStrategy.swift; path = unleash/Models/ActivationStrategy.swift; sourceTree = SOURCE_ROOT; };
+		9D1C646622E0D7800069FD45 /* VariantOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VariantOverride.swift; path = unleash/Models/VariantOverride.swift; sourceTree = SOURCE_ROOT; };
+		9D1C646922E0D7D00069FD45 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Payload.swift; path = unleash/Models/Payload.swift; sourceTree = SOURCE_ROOT; };
+		9D1C646C22E0E09D0069FD45 /* Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Features.swift; path = unleash/Models/Features.swift; sourceTree = SOURCE_ROOT; };
 		9D2C1CA822D9155300721A2D /* Unleash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Unleash.swift; path = unleash/Unleash.swift; sourceTree = SOURCE_ROOT; };
 		9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
 		9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
@@ -192,13 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				9D1C643222DEB88B0069FD45 /* RegisterServiceMock.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-                };
-		9D1C643622DF6AD30069FD45 /* Services */ = {
-			isa = PBXGroup;
-			children = (
 				9D1C644122DF92E80069FD45 /* RegisterServiceSpec.swift */,
 			);
 			path = Services;
@@ -208,6 +222,12 @@
 			isa = PBXGroup;
 			children = (
 				9D2C1CC722D985A200721A2D /* ClientRegistration.swift */,
+				9D1C645A22E0D1530069FD45 /* Feature.swift */,
+				9D1C646022E0D5D50069FD45 /* VariantDefinition.swift */,
+				9D1C646322E0D5E70069FD45 /* ActivationStrategy.swift */,
+				9D1C646622E0D7800069FD45 /* VariantOverride.swift */,
+				9D1C646922E0D7D00069FD45 /* Payload.swift */,
+				9D1C646C22E0E09D0069FD45 /* Features.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				9D2C1CCE22D99A0D00721A2D /* RegisterService.swift */,
+				9D1C645722E0045D0069FD45 /* ToggleService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -249,6 +270,7 @@
 				9D1C641622DD10650069FD45 /* UnleashSampleApp */,
 				9DEA494E22D7EE8C006FB13A /* Products */,
 				9D6D41FB22D7F011005D36A3 /* Frameworks */,
+				9D1C645322E003EE0069FD45 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -445,10 +467,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D1C642A22DE7E940069FD45 /* DefaultStrategy.swift in Sources */,
+				9D1C645822E0045D0069FD45 /* ToggleService.swift in Sources */,
+				9D1C646D22E0E09D0069FD45 /* Features.swift in Sources */,
+				9D1C646A22E0D7D00069FD45 /* Payload.swift in Sources */,
+				9D1C646122E0D5D50069FD45 /* VariantDefinition.swift in Sources */,
 				9D1C644E22DFB87A0069FD45 /* DebugLogger.swift in Sources */,
 				9D2C1CA922D9155300721A2D /* Unleash.swift in Sources */,
+				9D1C646722E0D7800069FD45 /* VariantOverride.swift in Sources */,
+				9D1C646422E0D5E70069FD45 /* ActivationStrategy.swift in Sources */,
 				9D2C1CC822D985A200721A2D /* ClientRegistration.swift in Sources */,
 				9D2C1CB522D9784F00721A2D /* Date+Extension.swift in Sources */,
+				9D1C645B22E0D1530069FD45 /* Feature.swift in Sources */,
 				9D2C1CB822D9787C00721A2D /* AppInfo.swift in Sources */,
 				9D2C1CCF22D99A0D00721A2D /* RegisterService.swift in Sources */,
 			);
@@ -458,12 +487,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D1C645922E0045D0069FD45 /* ToggleService.swift in Sources */,
 				9D1C642B22DE7E940069FD45 /* DefaultStrategy.swift in Sources */,
 				9D2C1CAA22D9155300721A2D /* Unleash.swift in Sources */,
 				9D2C1CCC22D9878F00721A2D /* ClientRegistrationSpec.swift in Sources */,
+				9D1C646222E0D5D50069FD45 /* VariantDefinition.swift in Sources */,
+				9D1C645C22E0D1530069FD45 /* Feature.swift in Sources */,
 				9D1C644422DF93900069FD45 /* ClientRegistrationBuilder.swift in Sources */,
 				9D2C1CC022D97B8000721A2D /* Date+ExtensionSpec.swift in Sources */,
+				9D1C646522E0D5E70069FD45 /* ActivationStrategy.swift in Sources */,
+				9D1C646E22E0E09D0069FD45 /* Features.swift in Sources */,
 				9D1C642E22DE80220069FD45 /* DefaultStrategySpec.swift in Sources */,
+				9D1C646822E0D7800069FD45 /* VariantOverride.swift in Sources */,
 				9D2C1CB922D9787C00721A2D /* AppInfo.swift in Sources */,
 				9D2C1CB622D9784F00721A2D /* Date+Extension.swift in Sources */,
 				9D1C644F22DFB87A0069FD45 /* DebugLogger.swift in Sources */,
@@ -471,6 +506,7 @@
 				9D2C1CC922D985A200721A2D /* ClientRegistration.swift in Sources */,
 				9D1C643022DEB5480069FD45 /* UnleashSpec.swift in Sources */,
 				9D1C643322DEB88B0069FD45 /* RegisterServiceMock.swift in Sources */,
+				9D1C646B22E0D7D00069FD45 /* Payload.swift in Sources */,
 				9D1C644222DF92E80069FD45 /* RegisterServiceSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
