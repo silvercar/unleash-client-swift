@@ -61,6 +61,11 @@
 		9D2C1CCC22D9878F00721A2D /* ClientRegistrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CCB22D9878F00721A2D /* ClientRegistrationSpec.swift */; };
 		9D2C1CCF22D99A0D00721A2D /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CCE22D99A0D00721A2D /* RegisterService.swift */; };
 		9D2C1CD022D99A0D00721A2D /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CCE22D99A0D00721A2D /* RegisterService.swift */; };
+		9D2FBD28230EFEEE000BAAF9 /* FeatureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FBD27230EFEEE000BAAF9 /* FeatureBuilder.swift */; };
+		9D2FBD2A230F0209000BAAF9 /* ToggleServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FBD29230F0209000BAAF9 /* ToggleServiceMock.swift */; };
+		9D2FBD2C230F05B5000BAAF9 /* ActivationStrategyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FBD2B230F05B5000BAAF9 /* ActivationStrategyBuilder.swift */; };
+		9D2FBD2E230F167F000BAAF9 /* VariantOverrideBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FBD2D230F167F000BAAF9 /* VariantOverrideBuilder.swift */; };
+		9D2FBD30230F16CD000BAAF9 /* VariantDefinitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FBD2F230F16CD000BAAF9 /* VariantDefinitionBuilder.swift */; };
 		9D6D41FD22D7F011005D36A3 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6D41FC22D7F011005D36A3 /* Nimble.framework */; };
 		9D6D41FF22D7F01F005D36A3 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6D41FE22D7F01F005D36A3 /* Quick.framework */; };
 		9D6D420122D7F043005D36A3 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D6D41FE22D7F01F005D36A3 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -141,6 +146,11 @@
 		9D2C1CC722D985A200721A2D /* ClientRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientRegistration.swift; path = unleash/Models/ClientRegistration.swift; sourceTree = SOURCE_ROOT; };
 		9D2C1CCB22D9878F00721A2D /* ClientRegistrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientRegistrationSpec.swift; path = unleashTests/Models/ClientRegistrationSpec.swift; sourceTree = SOURCE_ROOT; };
 		9D2C1CCE22D99A0D00721A2D /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterService.swift; path = unleash/Services/RegisterService.swift; sourceTree = SOURCE_ROOT; };
+		9D2FBD27230EFEEE000BAAF9 /* FeatureBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeatureBuilder.swift; path = unleashTests/Models/FeatureBuilder.swift; sourceTree = SOURCE_ROOT; };
+		9D2FBD29230F0209000BAAF9 /* ToggleServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToggleServiceMock.swift; path = unleashTests/Services/ToggleServiceMock.swift; sourceTree = SOURCE_ROOT; };
+		9D2FBD2B230F05B5000BAAF9 /* ActivationStrategyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivationStrategyBuilder.swift; path = unleashTests/Models/ActivationStrategyBuilder.swift; sourceTree = SOURCE_ROOT; };
+		9D2FBD2D230F167F000BAAF9 /* VariantOverrideBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VariantOverrideBuilder.swift; path = unleashTests/Models/VariantOverrideBuilder.swift; sourceTree = SOURCE_ROOT; };
+		9D2FBD2F230F16CD000BAAF9 /* VariantDefinitionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VariantDefinitionBuilder.swift; path = unleashTests/Models/VariantDefinitionBuilder.swift; sourceTree = SOURCE_ROOT; };
 		9D6D41FC22D7F011005D36A3 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		9D6D41FE22D7F01F005D36A3 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		9DEA494D22D7EE8C006FB13A /* Unleash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Unleash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				9D1C643222DEB88B0069FD45 /* RegisterServiceMock.swift */,
+				9D2FBD29230F0209000BAAF9 /* ToggleServiceMock.swift */,
 				9D1C644122DF92E80069FD45 /* RegisterServiceSpec.swift */,
 				9D0851C722E60F4D00934CE4 /* ToggleServiceSpec.swift */,
 			);
@@ -243,6 +254,10 @@
 				9D2C1CCB22D9878F00721A2D /* ClientRegistrationSpec.swift */,
 				9D1C644322DF93900069FD45 /* ClientRegistrationBuilder.swift */,
 				9D0851C922E6122D00934CE4 /* FeaturesBuilder.swift */,
+				9D2FBD27230EFEEE000BAAF9 /* FeatureBuilder.swift */,
+				9D2FBD2B230F05B5000BAAF9 /* ActivationStrategyBuilder.swift */,
+				9D2FBD2D230F167F000BAAF9 /* VariantOverrideBuilder.swift */,
+				9D2FBD2F230F16CD000BAAF9 /* VariantDefinitionBuilder.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -494,16 +509,21 @@
 			files = (
 				9D1C645922E0045D0069FD45 /* ToggleService.swift in Sources */,
 				9D1C642B22DE7E940069FD45 /* DefaultStrategy.swift in Sources */,
+				9D2FBD2C230F05B5000BAAF9 /* ActivationStrategyBuilder.swift in Sources */,
+				9D2FBD28230EFEEE000BAAF9 /* FeatureBuilder.swift in Sources */,
 				9D2C1CAA22D9155300721A2D /* Unleash.swift in Sources */,
 				9D2C1CCC22D9878F00721A2D /* ClientRegistrationSpec.swift in Sources */,
 				9D1C646222E0D5D50069FD45 /* VariantDefinition.swift in Sources */,
 				9D1C645C22E0D1530069FD45 /* Feature.swift in Sources */,
 				9D1C644422DF93900069FD45 /* ClientRegistrationBuilder.swift in Sources */,
+				9D2FBD2A230F0209000BAAF9 /* ToggleServiceMock.swift in Sources */,
 				9D2C1CC022D97B8000721A2D /* Date+ExtensionSpec.swift in Sources */,
 				9D0851C822E60F4D00934CE4 /* ToggleServiceSpec.swift in Sources */,
 				9D1C646522E0D5E70069FD45 /* ActivationStrategy.swift in Sources */,
 				9D1C646E22E0E09D0069FD45 /* Features.swift in Sources */,
+				9D2FBD30230F16CD000BAAF9 /* VariantDefinitionBuilder.swift in Sources */,
 				9D1C642E22DE80220069FD45 /* DefaultStrategySpec.swift in Sources */,
+				9D2FBD2E230F167F000BAAF9 /* VariantOverrideBuilder.swift in Sources */,
 				9D1C646822E0D7800069FD45 /* VariantOverride.swift in Sources */,
 				9D2C1CB922D9787C00721A2D /* AppInfo.swift in Sources */,
 				9D2C1CB622D9784F00721A2D /* Date+Extension.swift in Sources */,

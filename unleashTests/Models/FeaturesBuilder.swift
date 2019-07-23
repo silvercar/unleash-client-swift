@@ -9,6 +9,6 @@ import Foundation
 
 class FeaturesBuilder {
     func build() -> Features {
-        return Features(version: 10, features: [])
+        return Features(version: 10, features: [FeatureBuilder().build()])
     }
 }
