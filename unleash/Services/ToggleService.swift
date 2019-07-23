@@ -24,7 +24,7 @@ protocol ToggleServiceProtocol {
 
 extension ToggleService {
     func fetchToggles(url: URL) -> Promise<Features> {
-        let togglesUrl = url.appendingPathComponent("/client/features")
+        let togglesUrl = url.appendingPathComponent("client/features")
         return firstly {
             URLSession.shared.dataTask(.promise, with: try makeUrlRequest(url: togglesUrl)).validate()
             }.map {
