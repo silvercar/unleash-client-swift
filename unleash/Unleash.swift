@@ -16,32 +16,39 @@ public protocol Strategy {
 
 public class Unleash {
     private var registerService: RegisterServiceProtocol
+    private var toggleService: ToggleServiceProtocol
     public private(set) var appName: String
     public private(set) var url: String
     public private(set) var refreshInterval: Int?
     public private(set) var strategies: [Strategy]
     
     public convenience init(appName: String, url: String, refreshInterval: Int?, strategies: [Strategy] = []) {
+        let clientRegistration: ClientRegistration = ClientRegistration(appName: appName, strategies: strategies)
         let registerService: RegisterServiceProtocol = RegisterService()
+        let toggleService: ToggleServiceProtocol
+            = ToggleService(appName: appName, instanceId: clientRegistration.instanceId)
         let allStrategies: [Strategy] = [DefaultStrategy()] + strategies
 
-        self.init(registerService: registerService, appName: appName, url: url, refreshInterval: refreshInterval,
+        self.init(clientRegistration: clientRegistration, registerService: registerService,
+                  toggleService: toggleService, appName: appName, url: url, refreshInterval: refreshInterval,
                   strategies: allStrategies)
     }
     
-    init(registerService: RegisterServiceProtocol, appName: String, url: String, refreshInterval: Int?,
+    init(clientRegistration: ClientRegistration, registerService: RegisterServiceProtocol,
+         toggleService: ToggleServiceProtocol, appName: String, url: String, refreshInterval: Int?,
          strategies: [Strategy]) {
+        
         self.registerService = registerService
+        self.toggleService = toggleService
         self.appName = appName
         self.url = url
         self.refreshInterval = refreshInterval
         self.strategies = strategies
         
-        register()
+        register(body: clientRegistration)
     }
     
-    private func register() {
-        let body: ClientRegistration = ClientRegistration(appName: appName, strategies: strategies)
+    private func register(body: ClientRegistration) {
         attempt(maximumRetryCount: 3, delayBeforeRetry: .seconds(60)) {
             self.registerService.register(url: URL(string: self.url)!, body: body)
         }.done { response in
@@ -66,7 +73,13 @@ public class Unleash {
     }
     
     public func isEnabled(name: String) -> Bool {
-        // TODO: Need to implement 
+        toggleService.fetchToggles(url: URL(string: self.url)!)
+            .done { response in
+                log(dump(response.features.first { $0.name == name }!))
+            }.catch { error in
+                log("error \(error)")
+        }
+        
         return false
     }
 }

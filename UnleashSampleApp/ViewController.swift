@@ -9,14 +9,17 @@ import UIKit
 import Unleash
 
 class ViewController: UIViewController {
-
+    //MARK: Properties
+    @IBOutlet internal weak var isFeatureEnabled: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _ = Unleash(appName: "rac-web-admin-dev",
-                    url: "https://unleash.silvercar.com/api",
-                    refreshInterval: 300000,
-                    strategies: [EnvironmentStrategy()])
+        let unleash: Unleash = Unleash(appName: "ios-unleash-sample-app",
+                                       url: "https://unleash.silvercar.com/api",
+                                       refreshInterval: 300000,
+                                       strategies: [EnvironmentStrategy()])
+        self.isFeatureEnabled?.text = "\(unleash.isEnabled(name: "enable-auth0-in-admin-client"))"
     }
 }
 
@@ -26,6 +29,6 @@ class EnvironmentStrategy: Strategy {
     }
     
     func isEnabled(parameters: [String : String]) -> Bool {
-        return false
+        return "QA" == parameters["environment"]
     }
 }

@@ -17,21 +17,29 @@ class UnleashSpec : QuickSpec {
         let appName: String = "test"
         let url: String = "https://test.com"
         let interval: Int = 3232
-        var service: RegisterServiceProtocol?
+        var clientRegistration: ClientRegistration = ClientRegistration(appName: appName, strategies: [])
+        var registerService: RegisterServiceProtocol?
+        var toggleService: ToggleServiceProtocol?
         var unleash: Unleash {
-            return Unleash(registerService: service!,
-                           appName: appName,
-                           url: url,
-                           refreshInterval: interval,
+            return Unleash(clientRegistration: clientRegistration, registerService: registerService!,
+                           toggleService: toggleService!, appName: appName, url: url, refreshInterval: interval,
                            strategies: [])
         }
         
         describe("#init") {
+            enum Error: Swift.Error {
+                case error
+            }
+            
             context("when default initializer") {
                 let success = Promise<[String : Any]?> { seal in
                     seal.fulfill([:])
                 }
-                service = RegisterServiceMock(promise: success)
+                let error = Promise<Features> { seal in
+                    throw Error.error
+                }
+                registerService = RegisterServiceMock(promise: success)
+                toggleService = ToggleServiceMock(promise: error)
                 
                 it("sets default values") {
                     // Act
@@ -49,7 +57,7 @@ class UnleashSpec : QuickSpec {
                     _ = unleash
                     
                     // Assert
-                    if let result = (service as? RegisterServiceMock)?.body {
+                    if let result = (registerService as? RegisterServiceMock)?.body {
                         expect(result.appName).to(equal(appName))
                         expect(result.strategies).to(beEmpty())
                     } else {
@@ -64,7 +72,11 @@ class UnleashSpec : QuickSpec {
                     let success = Promise<[String : Any]?> { seal in
                         seal.fulfill([:])
                     }
-                    service = RegisterServiceMock(promise: success)
+                    let error = Promise<Features> { seal in
+                        throw Error.error
+                    }
+                    registerService = RegisterServiceMock(promise: success)
+                    toggleService = ToggleServiceMock(promise: error)
                     
                     // Act
                     _ = unleash
@@ -77,20 +89,20 @@ class UnleashSpec : QuickSpec {
             context("when unsuccessful registration") {
                 it ("will not register client") {
                     // Arrange
-                    enum Error: Swift.Error {
-                        case error
-                    }
-                    
-                    let error = Promise<[String : Any]?> { _ in
+                    let registerError = Promise<[String : Any]?> { _ in
                         throw Error.error
                     }
-                    service = RegisterServiceMock(promise: error)
+                    let toggleError = Promise<Features> { seal in
+                        throw Error.error
+                    }
+                    registerService = RegisterServiceMock(promise: registerError)
+                    toggleService = ToggleServiceMock(promise: toggleError)
                     
                     // Act
                     _ = unleash
                     
                     // Assert
-                    expect(error.isRejected).to(beTrue())
+                    expect(registerError.isRejected).to(beTrue())
                 }
             }
         }

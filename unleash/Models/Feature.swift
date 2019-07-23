@@ -11,14 +11,14 @@ class Feature: Codable {
     var name: String
     var description: String
     var enabled: Bool
-    var strategies: [ActivationStrategy]?
+    var strategies: [ActivationStrategy]
     var variants: [VariantDefinition]?
     var createdAt: String
     
     init(name: String,
          description: String,
          enabled: Bool,
-         strategies: [ActivationStrategy]?,
+         strategies: [ActivationStrategy],
          variants: [VariantDefinition]?,
          createdAt: String) {
         
