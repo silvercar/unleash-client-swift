@@ -14,9 +14,7 @@ import Quick
 class DefaultStrategySpec: QuickSpec {
     override func spec() {
         var strategy: DefaultStrategy {
-            get {
-                return DefaultStrategy()
-            }
+            return DefaultStrategy()
         }
         
         describe("#init") {
