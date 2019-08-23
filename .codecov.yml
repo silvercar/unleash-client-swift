@@ -1,0 +1,13 @@
+ignore:
+  - ".circleci"
+  - ".github"
+  - "UnleashSampleApp"
+  - "bin"
+  - "unleash.xcodeproj"
+  - "unleashTests"
+  - ".gitignore"
+  - ".swiftlint.yml"
+  - "Cartfile*
+  - "Dangerfile"
+  - "LICENSE"
+  - "README.md"
