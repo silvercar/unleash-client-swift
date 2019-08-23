@@ -1,5 +1,5 @@
 # Unleash client for Swift
-https://codecov.io/gh/silvercar/unleash-client-swift/branch/master/graph/badge.svg
+[![codecov](https://codecov.io/gh/silvercar/unleash-client-swift/branch/master/graph/badge.svg)](https://codecov.io/gh/silvercar/unleash-client-swift)
 
 ## Carthage
 This project uses carthage for dependency management. See https://github.com/Carthage/Carthage for more info. 
