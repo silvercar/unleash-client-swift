@@ -26,7 +26,10 @@ jobs:
           name: execute tests
           command: |
             mkdir -p ~/test-results/xctest/
-            fastlane scan --scheme "Unleash" --device "iPhone X" --clean --output_directory="~/test-results/xctest/" --output_types="junit" --output_files="junit.xml"
+            fastlane scan --scheme "Unleash" --device "iPhone X" --clean --output_directory="~/test-results/xctest/" --output_types="junit" --output_files="junit.xml" --code_coverage
+      - run:
+          name: Codecov
+          command: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: ~/test-results
       - store_artifacts:
