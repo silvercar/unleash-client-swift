@@ -35,7 +35,7 @@ class UnleashSpec : QuickSpec {
                 let success = Promise<[String : Any]?> { seal in
                     seal.fulfill([:])
                 }
-                let error = Promise<Features> { seal in
+                let error = Promise<Features> { _ in
                     throw Error.error
                 }
                 registerService = RegisterServiceMock(promise: success)
@@ -72,7 +72,7 @@ class UnleashSpec : QuickSpec {
                     let success = Promise<[String : Any]?> { seal in
                         seal.fulfill([:])
                     }
-                    let error = Promise<Features> { seal in
+                    let error = Promise<Features> { _ in
                         throw Error.error
                     }
                     registerService = RegisterServiceMock(promise: success)
@@ -92,7 +92,7 @@ class UnleashSpec : QuickSpec {
                     let registerError = Promise<[String : Any]?> { _ in
                         throw Error.error
                     }
-                    let toggleError = Promise<Features> { seal in
+                    let toggleError = Promise<Features> { _ in
                         throw Error.error
                     }
                     registerService = RegisterServiceMock(promise: registerError)

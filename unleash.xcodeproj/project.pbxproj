@@ -41,6 +41,7 @@
 		9D1C646B22E0D7D00069FD45 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646922E0D7D00069FD45 /* Payload.swift */; };
 		9D1C646D22E0E09D0069FD45 /* Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646C22E0E09D0069FD45 /* Features.swift */; };
 		9D1C646E22E0E09D0069FD45 /* Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C646C22E0E09D0069FD45 /* Features.swift */; };
+		9D22731F23109EAD001CDD08 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22731E23109EAD001CDD08 /* MemoryCache.swift */; };
 		9D2C1CA922D9155300721A2D /* Unleash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CA822D9155300721A2D /* Unleash.swift */; };
 		9D2C1CAA22D9155300721A2D /* Unleash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CA822D9155300721A2D /* Unleash.swift */; };
 		9D2C1CAD22D95B5F00721A2D /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; };
@@ -70,6 +71,7 @@
 		9D6D41FF22D7F01F005D36A3 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6D41FE22D7F01F005D36A3 /* Quick.framework */; };
 		9D6D420122D7F043005D36A3 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D6D41FE22D7F01F005D36A3 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D6D420222D7F043005D36A3 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D6D41FC22D7F011005D36A3 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9D76064D2314258C00B4217F /* MemoryCacheSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D76064C2314258C00B4217F /* MemoryCacheSpec.swift */; };
 		9DEA495722D7EE8C006FB13A /* Unleash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEA494D22D7EE8C006FB13A /* Unleash.framework */; };
 		9DEA495E22D7EE8C006FB13A /* Unleash.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DEA495022D7EE8C006FB13A /* Unleash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -137,6 +139,7 @@
 		9D1C646622E0D7800069FD45 /* VariantOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VariantOverride.swift; path = unleash/Models/VariantOverride.swift; sourceTree = SOURCE_ROOT; };
 		9D1C646922E0D7D00069FD45 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Payload.swift; path = unleash/Models/Payload.swift; sourceTree = SOURCE_ROOT; };
 		9D1C646C22E0E09D0069FD45 /* Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Features.swift; path = unleash/Models/Features.swift; sourceTree = SOURCE_ROOT; };
+		9D22731E23109EAD001CDD08 /* MemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemoryCache.swift; path = unleash/Data/MemoryCache.swift; sourceTree = SOURCE_ROOT; };
 		9D2C1CA822D9155300721A2D /* Unleash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Unleash.swift; path = unleash/Unleash.swift; sourceTree = SOURCE_ROOT; };
 		9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
 		9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 		9D2FBD2F230F16CD000BAAF9 /* VariantDefinitionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VariantDefinitionBuilder.swift; path = unleashTests/Models/VariantDefinitionBuilder.swift; sourceTree = SOURCE_ROOT; };
 		9D6D41FC22D7F011005D36A3 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		9D6D41FE22D7F01F005D36A3 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		9D76064C2314258C00B4217F /* MemoryCacheSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemoryCacheSpec.swift; path = unleashTests/Data/MemoryCacheSpec.swift; sourceTree = SOURCE_ROOT; };
 		9DEA494D22D7EE8C006FB13A /* Unleash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Unleash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DEA495022D7EE8C006FB13A /* Unleash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Unleash.h; sourceTree = "<group>"; };
 		9DEA495122D7EE8C006FB13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -234,6 +238,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		9D22731D23109AD8001CDD08 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9D22731E23109EAD001CDD08 /* MemoryCache.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		9D2C1CC622D9853A00721A2D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +295,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9D76064B2314255000B4217F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9D76064C2314258C00B4217F /* MemoryCacheSpec.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		9DEA494322D7EE8C006FB13A = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +327,7 @@
 		9DEA494F22D7EE8C006FB13A /* Unleash */ = {
 			isa = PBXGroup;
 			children = (
+				9D22731D23109AD8001CDD08 /* Data */,
 				9D1C642822DE7E5C0069FD45 /* Strategies */,
 				9D2C1CCD22D999EC00721A2D /* Services */,
 				9D2C1CC622D9853A00721A2D /* Models */,
@@ -323,6 +344,7 @@
 		9DEA495A22D7EE8C006FB13A /* UnleashTests */ = {
 			isa = PBXGroup;
 			children = (
+				9D76064B2314255000B4217F /* Data */,
 				9D1C643122DEB8780069FD45 /* Services */,
 				9D1C642C22DE80090069FD45 /* Strategies */,
 				9D2C1CCA22D9877500721A2D /* Models */,
@@ -492,6 +514,7 @@
 				9D1C646A22E0D7D00069FD45 /* Payload.swift in Sources */,
 				9D1C646122E0D5D50069FD45 /* VariantDefinition.swift in Sources */,
 				9D1C644E22DFB87A0069FD45 /* DebugLogger.swift in Sources */,
+				9D22731F23109EAD001CDD08 /* MemoryCache.swift in Sources */,
 				9D2C1CA922D9155300721A2D /* Unleash.swift in Sources */,
 				9D1C646722E0D7800069FD45 /* VariantOverride.swift in Sources */,
 				9D1C646422E0D5E70069FD45 /* ActivationStrategy.swift in Sources */,
@@ -512,6 +535,7 @@
 				9D2FBD2C230F05B5000BAAF9 /* ActivationStrategyBuilder.swift in Sources */,
 				9D2FBD28230EFEEE000BAAF9 /* FeatureBuilder.swift in Sources */,
 				9D2C1CAA22D9155300721A2D /* Unleash.swift in Sources */,
+				9D76064D2314258C00B4217F /* MemoryCacheSpec.swift in Sources */,
 				9D2C1CCC22D9878F00721A2D /* ClientRegistrationSpec.swift in Sources */,
 				9D1C646222E0D5D50069FD45 /* VariantDefinition.swift in Sources */,
 				9D1C645C22E0D1530069FD45 /* Feature.swift in Sources */,
