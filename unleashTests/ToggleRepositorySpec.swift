@@ -22,39 +22,41 @@ class ToggleRepositorySpec: QuickSpec {
             return ToggleRepository(memory: memory!, toggleService: toggleService!)
         }
         
-        describe("#get") {
+        describe("#toggles") {
+            beforeEach {
+                memory = MemoryCache(cache: Cache(), jsonDecoder: JSONDecoder(), jsonEncoder: JSONEncoder())
+                toggleService = ToggleServiceMock(promise: Promise<Toggles>.init(error: TestError.error))
+            }
+            
             context("when has cached toggles") {
                 it("return cached toggles") {
                     // Arrange
-                    memory = MemoryCache(cache: Cache(), jsonDecoder: JSONDecoder(), jsonEncoder: JSONEncoder())
                     memory?.put(for: "unleash-feature-toggles", value: toggles)
                     
-                    enum Error: Swift.Error {
-                        case error
-                    }
-                    toggleService = ToggleServiceMock(promise: Promise<Toggles>.init(error: Error.error))
+                    // Act
+                    let result = repository.toggles
                     
-                    // Act/Assert
-                    waitUntil { done in
-                        repository.get(url: url)
-                            .done { toggles in
-                                expect(toggles).toNot(beNil())
-                                done()
-                            }.catch { _ in
-                                fail()
-                        }
-                    }
+                    // Assert
+                    expect(result).toNot(beNil())
                 }
             }
             
-            context("when no cached toggles") {
-                it("return toggles from API") {
+            context("when does not have cached toggles") {
+                it("return optional") {
+                    // Act
+                    let result = repository.toggles
+                    
+                    // Assert
+                    expect(result).to(beNil())
+                }
+            }
+        }
+        
+        describe("#get") {
+            context("when given toggles url") {
+                it("return toggles") {
                     // Arrange
                     memory = MemoryCache(cache: Cache(), jsonDecoder: JSONDecoder(), jsonEncoder: JSONEncoder())
-                    
-                    enum Error: Swift.Error {
-                        case error
-                    }
                     toggleService = ToggleServiceMock(promise: Promise<Toggles>.value(toggles))
                     
                     // Act/Assert

@@ -16,7 +16,11 @@ public protocol Strategy {
 
 public class Unleash {
     private var registerService: RegisterServiceProtocol
-    private var toggleService: ToggleServiceProtocol
+    private var toggleRepository: ToggleRepositoryProtocol
+    private var toggles: Toggles? {
+        return toggleRepository.toggles
+    }
+    
     public private(set) var appName: String
     public private(set) var url: String
     public private(set) var refreshInterval: Int?
@@ -25,36 +29,42 @@ public class Unleash {
     public convenience init(appName: String, url: String, refreshInterval: Int?, strategies: [Strategy] = []) {
         let clientRegistration: ClientRegistration = ClientRegistration(appName: appName, strategies: strategies)
         let registerService: RegisterServiceProtocol = RegisterService()
+        let memory: MemoryCache = MemoryCache(cache: Cache(), jsonDecoder: JSONDecoder(), jsonEncoder: JSONEncoder())
         let toggleService: ToggleServiceProtocol
             = ToggleService(appName: appName, instanceId: clientRegistration.instanceId)
+        let toggleRepository: ToggleRepository = ToggleRepository(memory: memory, toggleService: toggleService)
         let allStrategies: [Strategy] = [DefaultStrategy()] + strategies
 
         self.init(clientRegistration: clientRegistration, registerService: registerService,
-                  toggleService: toggleService, appName: appName, url: url, refreshInterval: refreshInterval,
+                  toggleRepository: toggleRepository, appName: appName, url: url, refreshInterval: refreshInterval,
                   strategies: allStrategies)
     }
     
     init(clientRegistration: ClientRegistration, registerService: RegisterServiceProtocol,
-         toggleService: ToggleServiceProtocol, appName: String, url: String, refreshInterval: Int?,
+         toggleRepository: ToggleRepositoryProtocol, appName: String, url: String, refreshInterval: Int?,
          strategies: [Strategy]) {
         
         self.registerService = registerService
-        self.toggleService = toggleService
+        self.toggleRepository = toggleRepository
         self.appName = appName
         self.url = url
         self.refreshInterval = refreshInterval
         self.strategies = strategies
         
         register(body: clientRegistration)
+            .then { _ in
+                self.toggleRepository.get(url: URL(string: url)!)
+            }
+            .catch { error in
+                log("error \(error)")
+        }
     }
     
-    private func register(body: ClientRegistration) {
-        attempt(maximumRetryCount: 3, delayBeforeRetry: .seconds(60)) {
+    private func register(body: ClientRegistration) -> Promise<Void> {
+        return attempt(maximumRetryCount: 3, delayBeforeRetry: .seconds(60)) {
             self.registerService.register(url: URL(string: self.url)!, body: body)
         }.done { response in
             log("Unleash registered client \(body.instanceId) with response \(response ?? [:])")
-        }.catch { error in
-            log("error \(error)")
         }
     }
     
@@ -73,13 +83,6 @@ public class Unleash {
     }
     
     public func isEnabled(name: String) -> Bool {
-        toggleService.fetchToggles(url: URL(string: self.url)!)
-            .done { response in
-                log(dump(response.features.first { $0.name == name }!))
-            }.catch { error in
-                log("error \(error)")
-        }
-        
-        return false
+        return toggles?.features.first { $0.name == name }?.enabled ?? false
     }
 }

@@ -19,27 +19,27 @@ class UnleashSpec : QuickSpec {
         let interval: Int = 3232
         var clientRegistration: ClientRegistration = ClientRegistration(appName: appName, strategies: [])
         var registerService: RegisterServiceProtocol?
-        var toggleService: ToggleServiceProtocol?
+        var toggleRepository: ToggleRepositoryProtocol?
         var unleash: Unleash {
             return Unleash(clientRegistration: clientRegistration, registerService: registerService!,
-                           toggleService: toggleService!, appName: appName, url: url, refreshInterval: interval,
+                           toggleRepository: toggleRepository!, appName: appName, url: url, refreshInterval: interval,
                            strategies: [])
         }
         
-        describe("#init") {
-            enum Error: Swift.Error {
-                case error
+        beforeEach {
+            let error = Promise<[String : Any]?> { _ in
+                throw TestError.error
             }
-            
+            registerService = RegisterServiceMock(promise: error)
+            toggleRepository = ToggleRepositoryMock(toggles: nil)
+        }
+        
+        describe("#init") {
             context("when default initializer") {
                 let success = Promise<[String : Any]?> { seal in
                     seal.fulfill([:])
                 }
-                let error = Promise<Toggles> { _ in
-                    throw Error.error
-                }
                 registerService = RegisterServiceMock(promise: success)
-                toggleService = ToggleServiceMock(promise: error)
                 
                 it("sets default values") {
                     // Act
@@ -72,11 +72,7 @@ class UnleashSpec : QuickSpec {
                     let success = Promise<[String : Any]?> { seal in
                         seal.fulfill([:])
                     }
-                    let error = Promise<Toggles> { _ in
-                        throw Error.error
-                    }
                     registerService = RegisterServiceMock(promise: success)
-                    toggleService = ToggleServiceMock(promise: error)
                     
                     // Act
                     _ = unleash
@@ -89,20 +85,48 @@ class UnleashSpec : QuickSpec {
             context("when unsuccessful registration") {
                 it ("will not register client") {
                     // Arrange
-                    let registerError = Promise<[String : Any]?> { _ in
-                        throw Error.error
+                    let error = Promise<[String : Any]?> { _ in
+                        throw TestError.error
                     }
-                    let toggleError = Promise<Toggles> { _ in
-                        throw Error.error
-                    }
-                    registerService = RegisterServiceMock(promise: registerError)
-                    toggleService = ToggleServiceMock(promise: toggleError)
+                    registerService = RegisterServiceMock(promise: error)
                     
                     // Act
                     _ = unleash
                     
                     // Assert
-                    expect(registerError.isRejected).to(beTrue())
+                    expect(error.isRejected).to(beTrue())
+                }
+            }
+        }
+        
+        describe("#isEnabled") {
+            context("when toggles cached") {
+                it("return toggles enabled value") {
+                    // Arrange
+                    let name = "feature"
+                    let feature = FeatureBuilder()
+                        .withName(name: name)
+                        .build()
+                    let toggles = TogglesBuilder()
+                        .withFeature(feature: feature)
+                        .build()
+                    toggleRepository = ToggleRepositoryMock(toggles: toggles)
+                    
+                    // Act
+                    let result = unleash.isEnabled(name: name)
+                    
+                    // Assert
+                    expect(result).to(beTrue())
+                }
+            }
+            
+            context("when toggles not cached") {
+                it("return false") {
+                    // Act
+                    let result = unleash.isEnabled(name: "feature")
+                    
+                    // Assert
+                    expect(result).to(beFalse())
                 }
             }
         }

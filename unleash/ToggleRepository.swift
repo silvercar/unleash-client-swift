@@ -8,10 +8,24 @@
 import Foundation
 import PromiseKit
 
-class ToggleRepository {
+protocol ToggleRepositoryProtocol {
+    var toggles: Toggles? { get set }
+    func get(url: URL) -> Promise<Toggles>
+}
+
+class ToggleRepository: ToggleRepositoryProtocol {
     private let key = "unleash-feature-toggles"
     private let memory: MemoryCache
     private let toggleService: ToggleServiceProtocol
+    
+    public var toggles: Toggles? {
+        get {
+            return memory.get(for: key)
+        }
+        set {
+            memory.put(for: key, value: newValue)
+        }
+    }
     
     init(memory: MemoryCache, toggleService: ToggleServiceProtocol) {
         self.memory = memory
@@ -19,13 +33,10 @@ class ToggleRepository {
     }
     
     func get(url: URL) -> Promise<Toggles> {
-        if let toggles: Toggles = memory.get(for: key) {
-            return Promise { $0.fulfill(toggles) }
-        }
-        
         return toggleService.fetchToggles(url: url)
             .map { toggles in
-                self.memory.put(for: self.key, value: toggles)
+                log(dump(toggles))
+                self.toggles = toggles
                 return toggles
         }
     }
