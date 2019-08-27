@@ -19,7 +19,10 @@ class ViewController: UIViewController {
                                        url: "https://unleash.silvercar.com/api",
                                        refreshInterval: 300000,
                                        strategies: [EnvironmentStrategy()])
-        self.isFeatureEnabled?.text = "\(unleash.isEnabled(name: "enable-auth0-in-admin-client"))"
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.isFeatureEnabled?.text = "\(unleash.isEnabled(name: "enable-auth0-in-admin-client"))"
+        }
     }
 }
 

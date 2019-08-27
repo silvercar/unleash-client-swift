@@ -76,6 +76,8 @@
 		9D7606592314D3D200B4217F /* ToggleRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7606582314D3D200B4217F /* ToggleRepositorySpec.swift */; };
 		9D76065A2314D56C00B4217F /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22731E23109EAD001CDD08 /* MemoryCache.swift */; };
 		9D76065B2314D56F00B4217F /* ToggleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7606562314D2FE00B4217F /* ToggleRepository.swift */; };
+		9D76065F2315DB5E00B4217F /* ToggleRespositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D76065E2315DB5E00B4217F /* ToggleRespositoryMock.swift */; };
+		9D7606612316172600B4217F /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7606602316172600B4217F /* TestError.swift */; };
 		9DEA495722D7EE8C006FB13A /* Unleash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEA494D22D7EE8C006FB13A /* Unleash.framework */; };
 		9DEA495E22D7EE8C006FB13A /* Unleash.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DEA495022D7EE8C006FB13A /* Unleash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -163,6 +165,8 @@
 		9D76064C2314258C00B4217F /* MemoryCacheSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemoryCacheSpec.swift; path = unleashTests/Data/MemoryCacheSpec.swift; sourceTree = SOURCE_ROOT; };
 		9D7606562314D2FE00B4217F /* ToggleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToggleRepository.swift; path = unleash/ToggleRepository.swift; sourceTree = SOURCE_ROOT; };
 		9D7606582314D3D200B4217F /* ToggleRepositorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToggleRepositorySpec.swift; path = unleashTests/ToggleRepositorySpec.swift; sourceTree = SOURCE_ROOT; };
+		9D76065E2315DB5E00B4217F /* ToggleRespositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ToggleRespositoryMock.swift; path = unleashTests/ToggleRespositoryMock.swift; sourceTree = SOURCE_ROOT; };
+		9D7606602316172600B4217F /* TestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestError.swift; path = unleashTests/TestError.swift; sourceTree = SOURCE_ROOT; };
 		9DEA494D22D7EE8C006FB13A /* Unleash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Unleash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DEA495022D7EE8C006FB13A /* Unleash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Unleash.h; sourceTree = "<group>"; };
 		9DEA495122D7EE8C006FB13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -359,6 +363,8 @@
 				9D2C1CBF22D97B8000721A2D /* Date+ExtensionSpec.swift */,
 				9D7606582314D3D200B4217F /* ToggleRepositorySpec.swift */,
 				9D1C642F22DEB5480069FD45 /* UnleashSpec.swift */,
+				9D7606602316172600B4217F /* TestError.swift */,
+				9D76065E2315DB5E00B4217F /* ToggleRespositoryMock.swift */,
 			);
 			path = UnleashTests;
 			sourceTree = "<group>";
@@ -558,6 +564,8 @@
 				9D1C646E22E0E09D0069FD45 /* Toggles.swift in Sources */,
 				9D2FBD30230F16CD000BAAF9 /* VariantDefinitionBuilder.swift in Sources */,
 				9D1C642E22DE80220069FD45 /* DefaultStrategySpec.swift in Sources */,
+				9D76065F2315DB5E00B4217F /* ToggleRespositoryMock.swift in Sources */,
+				9D7606612316172600B4217F /* TestError.swift in Sources */,
 				9D2FBD2E230F167F000BAAF9 /* VariantOverrideBuilder.swift in Sources */,
 				9D1C646822E0D7800069FD45 /* VariantOverride.swift in Sources */,
 				9D2C1CB922D9787C00721A2D /* AppInfo.swift in Sources */,
