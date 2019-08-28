@@ -19,12 +19,8 @@ class ToggleRepository: ToggleRepositoryProtocol {
     private let toggleService: ToggleServiceProtocol
     
     public var toggles: Toggles? {
-        get {
-            return memory.get(for: key)
-        }
-        set {
-            memory.put(for: key, value: newValue)
-        }
+        get { return memory.get(for: key) }
+        set { memory.put(for: key, value: newValue) }
     }
     
     init(memory: MemoryCache, toggleService: ToggleServiceProtocol) {

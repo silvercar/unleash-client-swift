@@ -17,9 +17,7 @@ public protocol Strategy {
 public class Unleash {
     private var registerService: RegisterServiceProtocol
     private var toggleRepository: ToggleRepositoryProtocol
-    private var toggles: Toggles? {
-        return toggleRepository.toggles
-    }
+    private var toggles: Toggles? { return toggleRepository.toggles }
     
     public private(set) var appName: String
     public private(set) var url: String
