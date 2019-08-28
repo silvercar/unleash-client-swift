@@ -19,16 +19,16 @@ struct ToggleService: ToggleServiceProtocol {
 }
 
 protocol ToggleServiceProtocol {
-    func fetchToggles(url: URL) -> Promise<Features>
+    func fetchToggles(url: URL) -> Promise<Toggles>
 }
 
 extension ToggleService {
-    func fetchToggles(url: URL) -> Promise<Features> {
+    func fetchToggles(url: URL) -> Promise<Toggles> {
         let togglesUrl = url.appendingPathComponent("client/features")
         return firstly {
             URLSession.shared.dataTask(.promise, with: try makeUrlRequest(url: togglesUrl)).validate()
             }.map {
-                return try JSONDecoder().decode(Features.self, from: $0.data)
+                return try JSONDecoder().decode(Toggles.self, from: $0.data)
         }
     }
     
