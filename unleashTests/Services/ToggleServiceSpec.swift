@@ -29,11 +29,11 @@ class ToggleServiceSpec : QuickSpec {
         describe("#fetchToggles") {
             let url: String = "https://test.com/"
             let featureUrl: String = "\(url)client/features"
-            let features: Features = FeaturesBuilder().build()
+            let toggles: Toggles = TogglesBuilder().build()
             
             beforeEach {
                 let encoder = JSONEncoder()
-                let json = try? encoder.encode(features)
+                let json = try? encoder.encode(toggles)
                 stub(condition: { $0.url!.absoluteString == featureUrl }, response: { request in
                     urlRequest = request
                     return OHHTTPStubsResponse(data: json!, statusCode: 200, headers: nil)
@@ -66,8 +66,8 @@ class ToggleServiceSpec : QuickSpec {
                 waitUntil { done in
                     service.fetchToggles(url: URL(string: url)!)
                         .done { response in
-                            expect(response.version).to(equal(features.version))
-                            expect(response.features.count).to(equal(features.features.count))
+                            expect(response.version).to(equal(toggles.version))
+                            expect(response.features.count).to(equal(toggles.features.count))
                             done()
                         }.catch { _ in
                             fail()

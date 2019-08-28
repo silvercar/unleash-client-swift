@@ -1,5 +1,5 @@
 //
-//  Features.swift
+//  Toggles.swift
 //  Unleash
 //
 //  Copyright © 2019 Silvercar. All rights reserved.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Features: Codable {
+class Toggles: Codable {
     var version: Int
     var features: [Feature]
     

@@ -1,5 +1,5 @@
 //
-//  FeatureToggleRepository.swift
+//  ToggleRepository.swift
 //  Unleash
 //
 //  Copyright © 2019 Silvercar. All rights reserved.
@@ -8,7 +8,7 @@
 import Foundation
 import PromiseKit
 
-class FeatureToggleRepository {
+class ToggleRepository {
     private let key = "unleash-feature-toggles"
     private let memory: MemoryCache
     private let toggleService: ToggleServiceProtocol
@@ -18,15 +18,15 @@ class FeatureToggleRepository {
         self.toggleService = toggleService
     }
     
-    func get(url: URL) -> Promise<Features> {
-        if let features: Features = memory.get(for: key) {
-            return Promise { $0.fulfill(features) }
+    func get(url: URL) -> Promise<Toggles> {
+        if let toggles: Toggles = memory.get(for: key) {
+            return Promise { $0.fulfill(toggles) }
         }
         
         return toggleService.fetchToggles(url: url)
-            .map { features in
-                self.memory.put(for: self.key, value: features)
-                return features
+            .map { toggles in
+                self.memory.put(for: self.key, value: toggles)
+                return toggles
         }
     }
 }
