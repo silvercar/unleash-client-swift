@@ -81,6 +81,19 @@ public class Unleash {
     }
     
     public func isEnabled(name: String) -> Bool {
-        return toggles?.features.first { $0.name == name }?.enabled ?? false
+        var result = false
+        
+        let toggle_strategies = toggles?.features.first { $0.name == name }?.strategies
+        
+        for strategy in toggle_strategies! {
+            if result == true { break; }
+            
+            let targetStrategy = strategies.first { $0.name == strategy.name }
+            let targetResult = targetStrategy?.isEnabled(parameters: strategy.parameters!)
+            
+            result = result || targetResult!
+        }
+        
+        return result
     }
 }
