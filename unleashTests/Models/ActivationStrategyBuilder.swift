@@ -16,6 +16,6 @@ class ActivationStrategyBuilder {
     }
     
     func build() -> ActivationStrategy {
-        return ActivationStrategy(name: name, parameters: nil)
+        return ActivationStrategy(name: name, parameters: [:])
     }
 }
