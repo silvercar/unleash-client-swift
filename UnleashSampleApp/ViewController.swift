@@ -8,6 +8,11 @@
 import UIKit
 import Unleash
 
+// This constant is to emulate a client knowing its target environment is (e.g. QA, Production)
+struct Constants {
+    static let environment: String = "QA"
+}
+
 class ViewController: UIViewController {
     //MARK: Properties
     @IBOutlet internal weak var isFeatureEnabled: UILabel!
@@ -32,6 +37,7 @@ class EnvironmentStrategy: Strategy {
     }
     
     func isEnabled(parameters: [String : String]) -> Bool {
-        return "QA" == parameters["environment"]
+        return Constants.environment == parameters["environment"]
     }
 }
+

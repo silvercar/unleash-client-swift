@@ -23,7 +23,7 @@ class UnleashSpec : QuickSpec {
         var unleash: Unleash {
             return Unleash(clientRegistration: clientRegistration, registerService: registerService!,
                            toggleRepository: toggleRepository!, appName: appName, url: url, refreshInterval: interval,
-                           strategies: [])
+                           strategies: [DefaultStrategy()])
         }
         
         beforeEach {
@@ -49,7 +49,7 @@ class UnleashSpec : QuickSpec {
                     expect(result.appName).to(equal(appName))
                     expect(result.url).to(equal(url))
                     expect(result.refreshInterval).to(equal(interval))
-                    expect(result.strategies).to(beEmpty())
+                    expect(result.strategies.count).to(equal(1))
                 }
                 
                 it("sets client registration") {
@@ -101,22 +101,45 @@ class UnleashSpec : QuickSpec {
         
         describe("#isEnabled") {
             context("when toggles cached") {
-                it("return toggles enabled value") {
-                    // Arrange
-                    let name = "feature"
-                    let feature = FeatureBuilder()
-                        .withName(name: name)
-                        .build()
-                    let toggles = TogglesBuilder()
-                        .withFeature(feature: feature)
-                        .build()
-                    toggleRepository = ToggleRepositoryMock(toggles: toggles)
-                    
-                    // Act
-                    let result = unleash.isEnabled(name: name)
-                    
-                    // Assert
-                    expect(result).to(beTrue())
+                context("when feature disabled") {
+                    it("return false") {
+                        // Arrange
+                        let name = "feature"
+                        let feature = FeatureBuilder()
+                            .withName(name: name)
+                            .disable()
+                            .build()
+                        let toggles = TogglesBuilder()
+                            .withFeature(feature: feature)
+                            .build()
+                        toggleRepository = ToggleRepositoryMock(toggles: toggles)
+                        
+                        // Act
+                        let result = unleash.isEnabled(name: name)
+                        
+                        // Assert
+                        expect(result).to(beFalse())
+                    }
+                }
+                
+                context("when feature enabled") {
+                    it("return toggles enabled value") {
+                        // Arrange
+                        let name = "feature"
+                        let feature = FeatureBuilder()
+                            .withName(name: name)
+                            .build()
+                        let toggles = TogglesBuilder()
+                            .withFeature(feature: feature)
+                            .build()
+                        toggleRepository = ToggleRepositoryMock(toggles: toggles)
+                        
+                        // Act
+                        let result = unleash.isEnabled(name: name)
+                        
+                        // Assert
+                        expect(result).to(beTrue())
+                    }
                 }
             }
             
