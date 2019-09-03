@@ -107,7 +107,7 @@ class UnleashSpec : QuickSpec {
                         let name = "feature"
                         let feature = FeatureBuilder()
                             .withName(name: name)
-                            .disabled()
+                            .disable()
                             .build()
                         let toggles = TogglesBuilder()
                             .withFeature(feature: feature)

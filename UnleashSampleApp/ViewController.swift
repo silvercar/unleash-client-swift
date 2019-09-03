@@ -9,7 +9,7 @@ import UIKit
 import Unleash
 
 // This constant is to emulate a client knowing its target environment is (e.g. QA, Production)
-enum Constants {
+struct Constants {
     static let environment: String = "QA"
 }
 

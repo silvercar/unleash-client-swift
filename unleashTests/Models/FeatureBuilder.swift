@@ -9,15 +9,15 @@ import Foundation
 
 class FeatureBuilder {
     private var name = "feature-one"
-    private var enabled = true
+    private var isEnabled = true
     
     func withName(name: String) -> FeatureBuilder {
         self.name = name
         return self
     }
     
-    func disabled() -> FeatureBuilder {
-        self.enabled = false
+    func disable() -> FeatureBuilder {
+        self.isEnabled = false
         return self
     }
     
@@ -25,7 +25,7 @@ class FeatureBuilder {
         let strategy: ActivationStrategy = ActivationStrategyBuilder().withName(name: "default").build()
         let variant: VariantDefinition = VariantDefinitionBuilder().build()
         
-        return Feature(name: name, description: "Feature one", enabled: enabled, strategies: [strategy],
+        return Feature(name: name, description: "Feature one", enabled: isEnabled, strategies: [strategy],
                        variants: [variant], createdAt: "2019-06-05T19:22:36.027Z")
     }
 }
