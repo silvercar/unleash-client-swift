@@ -17,7 +17,7 @@
                BlueprintIdentifier = "9DEA494C22D7EE8C006FB13A"
                BuildableName = "Unleash.framework"
                BlueprintName = "Unleash"
-               ReferencedContainer = "container:Unleash.xcodeproj">
+               ReferencedContainer = "container:unleash.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "9DEA494C22D7EE8C006FB13A"
             BuildableName = "Unleash.framework"
             BlueprintName = "Unleash"
-            ReferencedContainer = "container:Unleash.xcodeproj">
+            ReferencedContainer = "container:unleash.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -46,7 +46,7 @@
                BlueprintIdentifier = "9DEA495522D7EE8C006FB13A"
                BuildableName = "UnleashTests.xctest"
                BlueprintName = "UnleashTests"
-               ReferencedContainer = "container:Unleash.xcodeproj">
+               ReferencedContainer = "container:unleash.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -56,7 +56,7 @@
             BlueprintIdentifier = "9DEA494C22D7EE8C006FB13A"
             BuildableName = "Unleash.framework"
             BlueprintName = "Unleash"
-            ReferencedContainer = "container:Unleash.xcodeproj">
+            ReferencedContainer = "container:unleash.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "9DEA494C22D7EE8C006FB13A"
             BuildableName = "Unleash.framework"
             BlueprintName = "Unleash"
-            ReferencedContainer = "container:Unleash.xcodeproj">
+            ReferencedContainer = "container:unleash.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -96,7 +96,7 @@
             BlueprintIdentifier = "9DEA494C22D7EE8C006FB13A"
             BuildableName = "Unleash.framework"
             BlueprintName = "Unleash"
-            ReferencedContainer = "container:Unleash.xcodeproj">
+            ReferencedContainer = "container:unleash.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

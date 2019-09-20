@@ -46,8 +46,6 @@
 		9D2C1CAA22D9155300721A2D /* Unleash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CA822D9155300721A2D /* Unleash.swift */; };
 		9D2C1CAD22D95B5F00721A2D /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; };
 		9D2C1CAE22D95B5F00721A2D /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */; };
-		9D2C1CB022D95B7200721A2D /* PMKFoundation.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9D2C1CB122D95B7200721A2D /* PromiseKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D2C1CB522D9784F00721A2D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CB422D9784F00721A2D /* Date+Extension.swift */; };
 		9D2C1CB622D9784F00721A2D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CB422D9784F00721A2D /* Date+Extension.swift */; };
 		9D2C1CB822D9787C00721A2D /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CB722D9787C00721A2D /* AppInfo.swift */; };
@@ -93,17 +91,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9D2C1CAF22D95B6500721A2D /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				9D2C1CB022D95B7200721A2D /* PMKFoundation.framework in CopyFiles */,
-				9D2C1CB122D95B7200721A2D /* PromiseKit.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9D6D420022D7F033005D36A3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -405,10 +392,10 @@
 			buildConfigurationList = 9DEA496122D7EE8C006FB13A /* Build configuration list for PBXNativeTarget "Unleash" */;
 			buildPhases = (
 				9DEA494822D7EE8C006FB13A /* Headers */,
-				9DEA494922D7EE8C006FB13A /* Sources */,
 				9DEA494A22D7EE8C006FB13A /* Frameworks */,
+				F1BBA44A2335603A0026502C /* Carthage Copy Frameworks */,
+				9DEA494922D7EE8C006FB13A /* Sources */,
 				9DEA494B22D7EE8C006FB13A /* Resources */,
-				9D2C1CAF22D95B6500721A2D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -460,7 +447,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "Unleash" */;
+			buildConfigurationList = 9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "unleash" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -506,6 +493,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F1BBA44A2335603A0026502C /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/PMKFoundation.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PMKFoundation.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PromiseKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9D1C641122DD10650069FD45 /* Sources */ = {
@@ -794,6 +806,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.silvercar.Unleash;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -825,6 +838,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.silvercar.Unleash;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -889,7 +903,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "Unleash" */ = {
+		9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "unleash" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9DEA495F22D7EE8C006FB13A /* Debug */,
