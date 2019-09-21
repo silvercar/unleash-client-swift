@@ -3,7 +3,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 This is the unofficial Swift client for Unleash. Read more about the [Unleash project](https://github.com/Unleash/unleash)
-**Version 3.x of the client requires `unleash-server` >= v3.x
+**Version 3.x of the client requires `unleash-server` >= v3.x**
 
 ## Installation
 ### Using [Carthage](https://github.com/Carthage/Carthage)
@@ -16,7 +16,9 @@ $ brew install carthage
 ```
 
 To add the Unleash Swift Client into your Xcode project using Carthage, add the following to your `Cartfile`:
-```github "silvercar/unleash-client-swift" ~> 1.0 ```
+```
+github "silvercar/unleash-client-swift" ~> 1.0 
+```
 
 Run `carthage update --platform ios` to build the framework and drag the built `Unleash.framework` into your Xcode project.
 
