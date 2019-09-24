@@ -15,8 +15,8 @@ struct Constants {
 
 class ViewController: UIViewController {
   //MARK: Properties
-  @IBOutlet internal weak var isFeatureEnabled: UILabel!
-  @IBOutlet internal weak var activityIndicator: UIActivityIndicatorView!
+  @IBOutlet internal var isFeatureEnabled: UILabel!
+  @IBOutlet internal var activityIndicator: UIActivityIndicatorView!
   private var isLoading: Bool = false {
     didSet {
       isLoading
@@ -43,10 +43,8 @@ class ViewController: UIViewController {
 // MARK: - UnleashDelegate
 extension ViewController: UnleashDelegate {
   func unleashDidFetchToggles(_ unleash: Unleash) {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-      self.isLoading = false
-      self.isFeatureEnabled?.text = "\(self.unleash.isEnabled(name: "enable-auth0-in-admin-client"))"
-    }
+    isLoading = false
+    isFeatureEnabled?.text = "\(unleash.isEnabled(name: "enable-auth0-in-admin-client"))"
   }
   
   func unleash(_ unleash: Unleash, didFailWithError error: Error) {

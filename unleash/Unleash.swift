@@ -36,7 +36,7 @@ public class Unleash {
   
   public weak var delegate: UnleashDelegate?
   
-  // MARK: - Lifecycle
+  // MARK: - Lifecycle - Public Init
   public convenience init(
     appName: String,
     url: String,
@@ -60,6 +60,7 @@ public class Unleash {
       strategies: allStrategies)
   }
   
+  // MARK: - Internal Init
   init(
     clientRegistration: ClientRegistration,
     registerService: RegisterServiceProtocol,
@@ -85,7 +86,7 @@ public class Unleash {
     }
   }
   
-  // MARK: - Private Methods
+  // MARK: - Register
   private func register(body: ClientRegistration) -> Promise<Void> {
     return attempt(maximumRetryCount: 3, delayBeforeRetry: .seconds(60)) {
       self.registerService.register(url: URL(string: self.url)!, body: body)
@@ -94,6 +95,7 @@ public class Unleash {
     }
   }
   
+  // MARK: - Attempt
   private func attempt<T>(
     maximumRetryCount: Int,
     delayBeforeRetry: DispatchTimeInterval,
@@ -110,7 +112,7 @@ public class Unleash {
     return attempt()
   }
   
-  // MARK: - Public Methods
+  // MARK: - Is Enabled
   public func isEnabled(name: String) -> Bool {
     guard
       let feature = toggles?.features.first(where: { $0.name == name }),
