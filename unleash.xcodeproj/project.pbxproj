@@ -447,7 +447,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "unleash" */;
+			buildConfigurationList = 9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "Unleash" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -903,7 +903,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "unleash" */ = {
+		9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "Unleash" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9DEA495F22D7EE8C006FB13A /* Debug */,
