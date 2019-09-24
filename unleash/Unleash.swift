@@ -30,26 +30,36 @@ public class Unleash {
   
   // MARK: - Lifecycle
   public convenience init(
-    appName: String, url: String,
-    refreshInterval: Int?, strategies: [Strategy] = []
+    appName: String,
+    url: String,
+    refreshInterval: Int?,
+    strategies: [Strategy] = []
   ) {
     let clientRegistration: ClientRegistration = ClientRegistration(appName: appName, strategies: strategies)
     let registerService: RegisterServiceProtocol = RegisterService()
     let memory: MemoryCache = MemoryCache(cache: Cache(), jsonDecoder: JSONDecoder(), jsonEncoder: JSONEncoder())
-    let toggleService: ToggleServiceProtocol
-      = ToggleService(appName: appName, instanceId: clientRegistration.instanceId)
+    let toggleService: ToggleServiceProtocol = ToggleService(appName: appName, instanceId: clientRegistration.instanceId)
     let toggleRepository: ToggleRepository = ToggleRepository(memory: memory, toggleService: toggleService)
     let allStrategies: [Strategy] = [DefaultStrategy()] + strategies
     
-    self.init(clientRegistration: clientRegistration, registerService: registerService,
-              toggleRepository: toggleRepository, appName: appName, url: url, refreshInterval: refreshInterval,
-              strategies: allStrategies)
+    self.init(
+      clientRegistration: clientRegistration,
+      registerService: registerService,
+      toggleRepository: toggleRepository,
+      appName: appName,
+      url: url,
+      refreshInterval: refreshInterval,
+      strategies: allStrategies)
   }
   
   init(
-    clientRegistration: ClientRegistration, registerService: RegisterServiceProtocol,
-    toggleRepository: ToggleRepositoryProtocol, appName: String, url: String,
-    refreshInterval: Int?, strategies: [Strategy]
+    clientRegistration: ClientRegistration,
+    registerService: RegisterServiceProtocol,
+    toggleRepository: ToggleRepositoryProtocol,
+    appName: String,
+    url: String,
+    refreshInterval: Int?,
+    strategies: [Strategy]
   ) {
     self.registerService = registerService
     self.toggleRepository = toggleRepository
@@ -59,8 +69,8 @@ public class Unleash {
     self.strategies = strategies
     
     register(body: clientRegistration)
-      .then { _ in
-        self.toggleRepository.get(url: URL(string: url)!)
+    .then { _ in
+      self.toggleRepository.get(url: URL(string: url)!)
     }
     .catch { error in
       log("error \(error)")
