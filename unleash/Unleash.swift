@@ -28,6 +28,8 @@ public class Unleash {
   public private(set) var refreshInterval: Int?
   public private(set) var strategies: [Strategy]
   
+  weak var delegate: UnleashDelegate?
+  
   // MARK: - Lifecycle
   public convenience init(
     appName: String,
@@ -69,11 +71,11 @@ public class Unleash {
     self.strategies = strategies
     
     register(body: clientRegistration)
-    .then { _ in
-      self.toggleRepository.get(url: URL(string: url)!)
-    }
+    .then { self.toggleRepository.get(url: URL(string: url)!) }
+    .done { _ in self.delegate?.unleashDidFetchToggles(self) }
     .catch { error in
       log("error \(error)")
+      self.delegate?.unleash(self, didFailWithError: error)
     }
   }
   
