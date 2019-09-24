@@ -9,6 +9,12 @@ import Foundation
 import PMKFoundation
 import PromiseKit
 
+// MARK: - UnleashDelegate Protocol
+public protocol UnleashDelegate: AnyObject {
+  func unleashDidFetchToggles(_ unleash: Unleash)
+  func unleash(_ unleash: Unleash, didFailWithError error: Error)
+}
+
 // MARK: - Strategy
 public protocol Strategy {
   var name: String { get }
@@ -28,7 +34,7 @@ public class Unleash {
   public private(set) var refreshInterval: Int?
   public private(set) var strategies: [Strategy]
   
-  weak var delegate: UnleashDelegate?
+  public weak var delegate: UnleashDelegate?
   
   // MARK: - Lifecycle
   public convenience init(
@@ -108,7 +114,7 @@ public class Unleash {
   public func isEnabled(name: String) -> Bool {
     guard
       let feature = toggles?.features.first(where: { $0.name == name }),
-      !feature.enabled
+      feature.enabled
       else { return false }
     
     for strategy in feature.strategies {

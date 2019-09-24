@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,34 +26,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is feature enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ww-Iu-zT8" userLabel="featureEnabledLabel">
-                                <rect key="frame" x="20" y="364" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhv-QG-5k4" userLabel="isFeatureEnabled">
-                                <rect key="frame" x="20" y="393" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wnn-vm-2RZ">
+                                <rect key="frame" x="20" y="420" width="374" height="56.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is feature enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ww-Iu-zT8" userLabel="featureEnabledLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="137" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Dro-ni-OQd">
+                                        <rect key="frame" x="0.0" y="28.5" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhv-QG-5k4" userLabel="isFeatureEnabled">
+                                        <rect key="frame" x="0.0" y="56.5" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Aa6-QI-dNw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="103" id="BS1-QC-JQN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lhv-QG-5k4" secondAttribute="bottom" constant="448" id="Bh0-Ue-HAB"/>
-                            <constraint firstItem="lhv-QG-5k4" firstAttribute="leading" secondItem="Aa6-QI-dNw" secondAttribute="leading" id="HOB-hA-VPO"/>
-                            <constraint firstItem="lhv-QG-5k4" firstAttribute="trailing" secondItem="6Ww-Iu-zT8" secondAttribute="trailing" id="Ljb-9q-h6S"/>
-                            <constraint firstItem="lhv-QG-5k4" firstAttribute="trailing" secondItem="Aa6-QI-dNw" secondAttribute="trailing" id="M58-4r-l83"/>
+                            <constraint firstItem="wnn-vm-2RZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="I1u-tg-15s"/>
+                            <constraint firstItem="wnn-vm-2RZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="MDF-HC-4ZM"/>
                             <constraint firstItem="Aa6-QI-dNw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="VPu-EX-wIz"/>
-                            <constraint firstItem="lhv-QG-5k4" firstAttribute="top" secondItem="6Ww-Iu-zT8" secondAttribute="bottom" constant="8" symbolic="YES" id="cel-bx-xe5"/>
                             <constraint firstItem="Aa6-QI-dNw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="dAf-Or-U74"/>
-                            <constraint firstItem="lhv-QG-5k4" firstAttribute="leading" secondItem="6Ww-Iu-zT8" secondAttribute="leading" id="hh4-9P-YDb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wnn-vm-2RZ" secondAttribute="trailing" constant="20" id="fuf-xH-XKQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Dro-ni-OQd" id="tON-Rn-F7P"/>
                         <outlet property="isFeatureEnabled" destination="lhv-QG-5k4" id="fml-vs-PIf"/>
                     </connections>
                 </viewController>
