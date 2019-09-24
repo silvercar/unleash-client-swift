@@ -78,6 +78,7 @@
 		9D7606612316172600B4217F /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7606602316172600B4217F /* TestError.swift */; };
 		9DEA495722D7EE8C006FB13A /* Unleash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEA494D22D7EE8C006FB13A /* Unleash.framework */; };
 		9DEA495E22D7EE8C006FB13A /* Unleash.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DEA495022D7EE8C006FB13A /* Unleash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F1ABDD56233A7FED0019A608 /* UnleashDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ABDD55233A7FED0019A608 /* UnleashDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		9DEA495122D7EE8C006FB13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DEA495622D7EE8C006FB13A /* UnleashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnleashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DEA495D22D7EE8C006FB13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1ABDD55233A7FED0019A608 /* UnleashDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashDelegate.swift; path = unleash/Delegate/UnleashDelegate.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 		9DEA494F22D7EE8C006FB13A /* Unleash */ = {
 			isa = PBXGroup;
 			children = (
+				F1ABDD54233A7FD20019A608 /* Delegate */,
 				9D22731D23109AD8001CDD08 /* Data */,
 				9D2C1CC622D9853A00721A2D /* Models */,
 				9D2C1CCD22D999EC00721A2D /* Services */,
@@ -354,6 +357,14 @@
 				9D76065E2315DB5E00B4217F /* ToggleRespositoryMock.swift */,
 			);
 			path = UnleashTests;
+			sourceTree = "<group>";
+		};
+		F1ABDD54233A7FD20019A608 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				F1ABDD55233A7FED0019A608 /* UnleashDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,7 +458,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "unleash" */;
+			buildConfigurationList = 9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "Unleash" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -538,6 +549,7 @@
 				9D1C645822E0045D0069FD45 /* ToggleService.swift in Sources */,
 				9D1C646D22E0E09D0069FD45 /* Toggles.swift in Sources */,
 				9D1C646A22E0D7D00069FD45 /* Payload.swift in Sources */,
+				F1ABDD56233A7FED0019A608 /* UnleashDelegate.swift in Sources */,
 				9D1C646122E0D5D50069FD45 /* VariantDefinition.swift in Sources */,
 				9D1C644E22DFB87A0069FD45 /* DebugLogger.swift in Sources */,
 				9D7606572314D2FE00B4217F /* ToggleRepository.swift in Sources */,
@@ -903,7 +915,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "unleash" */ = {
+		9DEA494722D7EE8C006FB13A /* Build configuration list for PBXProject "Unleash" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9DEA495F22D7EE8C006FB13A /* Debug */,
