@@ -9,12 +9,6 @@ import Foundation
 import PMKFoundation
 import PromiseKit
 
-// MARK: - UnleashDelegate Protocol
-public protocol UnleashDelegate: AnyObject {
-  func unleashDidFetchToggles(_ unleash: Unleash)
-  func unleash(_ unleash: Unleash, didFailWithError error: Error)
-}
-
 // MARK: - Strategy
 public protocol Strategy {
   var name: String { get }
@@ -31,11 +25,14 @@ public class Unleash {
   
   public private(set) var appName: String
   public private(set) var url: String
-  public private(set) var refreshInterval: Int?
+  public private(set) var refreshInterval: Int? {
+    didSet {
+      guard let interval = refreshInterval else { return }
+      pollFeatures(TimeInterval(interval))
+    }
+  }
   public private(set) var strategies: [Strategy]
-  
-  public weak var delegate: UnleashDelegate?
-  
+    
   // MARK: - Lifecycle - Public Init
   public convenience init(
     appName: String,
@@ -78,12 +75,14 @@ public class Unleash {
     self.strategies = strategies
     
     register(body: clientRegistration)
-    .then { self.toggleRepository.get(url: URL(string: url)!) }
-    .done { _ in self.delegate?.unleashDidFetchToggles(self) }
-    .catch { error in
-      log("error \(error)")
-      self.delegate?.unleash(self, didFailWithError: error)
+    .then { self.fetchToggles() }
+    .then { _ -> Promise<Void> in
+      if let interval = self.refreshInterval {
+        self.pollFeatures(TimeInterval(interval))
+      }
+      return .value(())
     }
+    .catch { error in log("error \(error)") }
   }
   
   // MARK: - Register
@@ -112,6 +111,26 @@ public class Unleash {
     return attempt()
   }
   
+  // MARK: - Fetch Features
+  private func fetchToggles() -> Promise<Void> {
+    guard let url = URL(string: self.url) else { return .value(()) }
+    
+    return self.attempt(maximumRetryCount: 3, delayBeforeRetry: .seconds(60)) {
+      self.toggleRepository.get(url: url).asVoid()
+    }
+  }
+  
+  // MARK: - Poll
+  private func pollFeatures(_ interval: TimeInterval) {
+    let timer = Timer(timeInterval: TimeInterval(interval), repeats: true) { [weak self] _ in
+      print("Timer triggered again")
+      guard let self = self else { return }
+      _ = self.fetchToggles().done { print("Toggles fetched") }
+    }
+    RunLoop.current.add(timer, forMode: .common)
+    timer.fire()
+  }
+  
   // MARK: - Is Enabled
   public func isEnabled(name: String) -> Bool {
     guard
@@ -127,7 +146,6 @@ public class Unleash {
         return true
       }
     }
-    
     return false
   }
 }

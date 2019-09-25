@@ -34,25 +34,21 @@ class ViewController: UIViewController {
     unleash = Unleash(
       appName: "ios-unleash-sample-app",
       url: "https://unleash.silvercar.com/api",
-      refreshInterval: 300000,
+      refreshInterval: 10,
       strategies: [EnvironmentStrategy()])
-    unleash.delegate = self
-  }
-}
-
-// MARK: - UnleashDelegate
-extension ViewController: UnleashDelegate {
-  func unleashDidFetchToggles(_ unleash: Unleash) {
     isLoading = false
-    isFeatureEnabled?.text = "\(unleash.isEnabled(name: "enable-auth0-in-admin-client"))"
+    isFeatureEnabled.text = "\(unleash.isEnabled(name: "enable-auth0-in-admin-client"))"
   }
   
-  func unleash(_ unleash: Unleash, didFailWithError error: Error) {
+  @IBAction func didTapRefresh(_ sender: UIButton) {
+    isFeatureEnabled.text = ""
+    isLoading = true
+    isFeatureEnabled.text = "\(unleash.isEnabled(name: "enable-auth0-in-admin-client"))"
     isLoading = false
-    isFeatureEnabled?.text = "Unleash Failed: \(error.localizedDescription)"
   }
 }
 
+// MARK: - EnvironmentStrategy
 class EnvironmentStrategy: Strategy {    
   var name: String {
     return "environment"
