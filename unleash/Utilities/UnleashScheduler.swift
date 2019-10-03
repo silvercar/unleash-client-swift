@@ -18,18 +18,18 @@ protocol Scheduler {
 final class UnleashScheduler: Scheduler {
   
   // MARK: - Properties
-  private var interval: TimeInterval = 86400
+  private var interval: TimeInterval
   private var repeats: Bool = false
   private var timer: Timer?
   private(set) var failureCount = 0
   
   // MARK: - Init
-  private init(interval: TimeInterval = 86400, repeats: Bool = false) {
+  private init(interval: TimeInterval, repeats: Bool = false) {
     self.interval = interval
     self.repeats = repeats
   }
   
-  static func scheduler(interval: TimeInterval = 86400, repeats: Bool = false) -> UnleashScheduler {
+  static func scheduler(interval: TimeInterval = 1800, repeats: Bool = false) -> UnleashScheduler {
     return UnleashScheduler(interval: interval, repeats: repeats)
   }
   
@@ -47,7 +47,7 @@ final class UnleashScheduler: Scheduler {
     return self
   }
   
-  private func commonStart() {
+  func start() {
     guard
       let timer = self.timer,
       timer.isValid
@@ -56,20 +56,12 @@ final class UnleashScheduler: Scheduler {
     timer.fire()
   }
   
-  private func commonCancel() {
+  func cancel() {
     guard
       let timer = self.timer,
       timer.isValid
       else { return }
     timer.invalidate()
     self.timer = nil
-  }
-  
-  func start() {
-    commonStart()
-  }
-  
-  func cancel() {
-    commonCancel()
   }
 }

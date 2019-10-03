@@ -30,7 +30,8 @@ public class Unleash {
   private var toggles: Toggles? { return toggleRepository.toggles }
   private lazy var scheduler: Scheduler = {
     let interval = TimeInterval(self.refreshInterval)
-    return UnleashScheduler.scheduler(interval: interval, repeats: true)
+    let shouldPoll = interval > 0
+    return UnleashScheduler.scheduler(interval: interval, repeats: shouldPoll)
   }()
   
   public private(set) var appName: String
@@ -42,7 +43,7 @@ public class Unleash {
   public convenience init(
     appName: String,
     url: String,
-    refreshInterval: Int = 0,
+    refreshInterval: Int = 3600,
     strategies: [Strategy] = []
   ) {
     let clientRegistration: ClientRegistration = ClientRegistration(appName: appName, strategies: strategies)
