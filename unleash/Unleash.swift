@@ -10,7 +10,7 @@ import PMKFoundation
 import PromiseKit
 
 // MARK: - UnleashError
-enum UnleashError: Error {
+public enum UnleashError: Error {
   case noURLProvided
   case maxRetriesReached
 }
@@ -21,6 +21,11 @@ public protocol Strategy {
   func isEnabled(parameters: [String: String]) -> Bool
 }
 
+public protocol UnleashDelegate {
+  func unleashDidLoad(_ unleash: Unleash)
+  func unleashDidFail(_ unleash: Unleash, withError error: Error)
+}
+
 // MARK: - Unleash
 public class Unleash {
   
@@ -28,17 +33,15 @@ public class Unleash {
   private var registerService: RegisterServiceProtocol
   private var toggleRepository: ToggleRepositoryProtocol
   private var toggles: Toggles? { return toggleRepository.toggles }
-  private lazy var scheduler: Scheduler = {
-    let interval = TimeInterval(self.refreshInterval)
-    let shouldPoll = interval > 0
-    return UnleashScheduler.scheduler(interval: interval, repeats: shouldPoll)
-  }()
+  private var repeater: Repeater
+  private var scheduler: Scheduler
   
   public private(set) var appName: String
   public private(set) var url: String
   public private(set) var refreshInterval: Int
   public private(set) var strategies: [Strategy]
-    
+  public var delegate: UnleashDelegate?
+  
   // MARK: - Lifecycle - Public Init
   public convenience init(
     appName: String,
@@ -71,7 +74,9 @@ public class Unleash {
     appName: String,
     url: String,
     refreshInterval: Int,
-    strategies: [Strategy]
+    strategies: [Strategy],
+    repeater: Repeater? = nil,
+    scheduler: Scheduler? = nil
   ) {
     self.registerService = registerService
     self.toggleRepository = toggleRepository
@@ -80,47 +85,82 @@ public class Unleash {
     self.refreshInterval = refreshInterval
     self.strategies = strategies
     
-    register(body: clientRegistration)
-    .then { _ -> Promise<Void> in
-      self.scheduler.do { self.fetch() }.start()
-      return .value(())
+    if let repeater = repeater {
+      self.repeater = repeater
+    } else {
+      self.repeater = UnleashRepeater.initialize(maxAttempts: 3, delayBeforeRetry: 60)
     }
-    .catch { error in log("error \(error)") }
+    
+    if let scheduler = scheduler {
+      self.scheduler = scheduler
+    } else {
+      let interval = TimeInterval(refreshInterval)
+      let shouldPoll = interval > 0
+      self.scheduler = UnleashScheduler.scheduler(interval: interval, repeats: shouldPoll)
+    }
+    
+    self.start(client: clientRegistration)
   }
   
-  // MARK: - Register
-  private func register(body: ClientRegistration) -> Promise<Void> {
-    return attempt(maximumRetryCount: 3, delayBeforeRetry: .seconds(60)) {
-      self.registerService.register(url: URL(string: self.url)!, body: body)
-    }.done { response in
-      log("Unleash registered client \(body.instanceId) with response \(response ?? [:])")
-    }
-  }
-  
-  // MARK: - Attempt
-  private func attempt<T>(
-    maximumRetryCount: Int,
-    delayBeforeRetry: DispatchTimeInterval,
-    _ body: @escaping () -> Promise<T>
-  ) -> Promise<T> {
-    var attempts = 0
-    func attempt() -> Promise<T> {
-      attempts += 1
-      return body().recover { error -> Promise<T> in
-        guard attempts < maximumRetryCount else { throw error }
-        return after(delayBeforeRetry).then(on: nil, attempt)
+  // MARK: Start
+  private func start(client: ClientRegistration) {
+    repeater.attempt { () -> Promise<Void> in
+      return self.register(body: client)
+      .then { response -> Promise<Void> in
+        self.scheduler.do {
+          _ = self.fetchToggles().done { self.delegate?.unleashDidLoad(self) }
+        }
+        .start()
+        return .value(())
       }
     }
-    return attempt()
+    .catch { self.delegate?.unleashDidFail(self, withError: $0) }
+  }
+  
+  // MARK: Register
+  private func register(body: ClientRegistration, completion: @escaping (Error?) -> Void) {
+    guard let url = URL(string: self.url) else { return completion(UnleashError.noURLProvided) }
+    _ = self.registerService.register(url: url, body: body)
+      .tap({ result in
+        switch result {
+        case .fulfilled(let response):
+           log("Unleash registered client \(body.instanceId) with response \(response ?? [:])")
+          completion(nil)
+        case .rejected(let error):
+          completion(error)
+        }
+      })
   }
   
   @discardableResult
-  private func fetch() -> Promise<Void> {
-    guard let url = URL(string: self.url) else { return .value(()) }
-    return self.toggleRepository.get(url: url).asVoid()
+  private func register(body: ClientRegistration) -> Promise<Void> {
+    return Promise { resolver in
+      self.register(body: body) { error in resolver.resolve(error) }
+    }
   }
   
-  // MARK: - Is Enabled
+  // MARK: Fetch Toggles
+  private func fetchToggles(completion: @escaping (Error?) -> Void) {
+    guard let url = URL(string: self.url) else { return completion(UnleashError.noURLProvided) }
+    _ = self.toggleRepository.get(url: url)
+      .tap { result in
+        switch result {
+        case .fulfilled(_):
+          completion(nil)
+        case .rejected(let error):
+          completion(error)
+        }
+      }
+  }
+  
+  @discardableResult
+  private func fetchToggles() -> Promise<Void> {
+    return Promise { resolver in
+      self.fetchToggles { error in resolver.resolve(error) }
+    }
+  }
+  
+  // MARK: Is Enabled
   public func isEnabled(name: String) -> Bool {
     guard
       let feature = toggles?.features.first(where: { $0.name == name }),
