@@ -10,7 +10,10 @@ import Unleash
 
 // This constant is to emulate a client knowing its target environment is (e.g. QA, Production)
 struct Constants {
-  static let environment: String = "QA"
+  static let environment: String = "qa"
+  static let appName = "ios-unleash-sample-app"
+  static let unleashUrl = "https://unleash.silvercar.com/api"
+  static let featureToggleName = "enable-ios-unleash-sample-app"
 }
 
 class ViewController: UIViewController {
@@ -32,18 +35,18 @@ class ViewController: UIViewController {
     
     isLoading = true
     unleash = Unleash(
-      appName: "ios-unleash-sample-app",
-      url: "https://unleash.silvercar.com/api",
+      appName: Constants.appName,
+      url: Constants.unleashUrl,
       refreshInterval: 10,
       strategies: [EnvironmentStrategy()])
     isLoading = false
-    isFeatureEnabled.text = "\(unleash.isEnabled(name: "enable-auth0-in-admin-client"))"
+    isFeatureEnabled.text = "\(unleash.isEnabled(name: ""))"
   }
   
   @IBAction func didTapRefresh(_ sender: UIButton) {
     isFeatureEnabled.text = ""
     isLoading = true
-    isFeatureEnabled.text = "\(unleash.isEnabled(name: "enable-auth0-in-admin-client"))"
+    isFeatureEnabled.text = "\(unleash.isEnabled(name: Constants.featureToggleName))"
     isLoading = false
   }
 }

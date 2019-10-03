@@ -9,6 +9,12 @@ import Foundation
 import PMKFoundation
 import PromiseKit
 
+// MARK: - UnleashError
+enum UnleashError: Error {
+  case noURLProvided
+  case maxRetriesReached
+}
+
 // MARK: - Strategy
 public protocol Strategy {
   var name: String { get }
@@ -22,22 +28,21 @@ public class Unleash {
   private var registerService: RegisterServiceProtocol
   private var toggleRepository: ToggleRepositoryProtocol
   private var toggles: Toggles? { return toggleRepository.toggles }
+  private lazy var scheduler: Scheduler = {
+    let interval = TimeInterval(self.refreshInterval)
+    return UnleashScheduler.scheduler(interval: interval, repeats: true)
+  }()
   
   public private(set) var appName: String
   public private(set) var url: String
-  public private(set) var refreshInterval: Int? {
-    didSet {
-      guard let interval = refreshInterval else { return }
-      pollFeatures(TimeInterval(interval))
-    }
-  }
+  public private(set) var refreshInterval: Int
   public private(set) var strategies: [Strategy]
     
   // MARK: - Lifecycle - Public Init
   public convenience init(
     appName: String,
     url: String,
-    refreshInterval: Int?,
+    refreshInterval: Int = 0,
     strategies: [Strategy] = []
   ) {
     let clientRegistration: ClientRegistration = ClientRegistration(appName: appName, strategies: strategies)
@@ -64,7 +69,7 @@ public class Unleash {
     toggleRepository: ToggleRepositoryProtocol,
     appName: String,
     url: String,
-    refreshInterval: Int?,
+    refreshInterval: Int,
     strategies: [Strategy]
   ) {
     self.registerService = registerService
@@ -75,11 +80,8 @@ public class Unleash {
     self.strategies = strategies
     
     register(body: clientRegistration)
-    .then { self.fetchToggles() }
     .then { _ -> Promise<Void> in
-      if let interval = self.refreshInterval {
-        self.pollFeatures(TimeInterval(interval))
-      }
+      self.scheduler.do { self.fetch() }.start()
       return .value(())
     }
     .catch { error in log("error \(error)") }
@@ -111,24 +113,10 @@ public class Unleash {
     return attempt()
   }
   
-  // MARK: - Fetch Features
-  private func fetchToggles() -> Promise<Void> {
+  @discardableResult
+  private func fetch() -> Promise<Void> {
     guard let url = URL(string: self.url) else { return .value(()) }
-    
-    return self.attempt(maximumRetryCount: 3, delayBeforeRetry: .seconds(60)) {
-      self.toggleRepository.get(url: url).asVoid()
-    }
-  }
-  
-  // MARK: - Poll
-  private func pollFeatures(_ interval: TimeInterval) {
-    let timer = Timer(timeInterval: TimeInterval(interval), repeats: true) { [weak self] _ in
-      print("Timer triggered again")
-      guard let self = self else { return }
-      _ = self.fetchToggles().done { print("Toggles fetched") }
-    }
-    RunLoop.current.add(timer, forMode: .common)
-    timer.fire()
+    return self.toggleRepository.get(url: url).asVoid()
   }
   
   // MARK: - Is Enabled
