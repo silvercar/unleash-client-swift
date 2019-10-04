@@ -38,7 +38,7 @@ public class Unleash {
   
   public private(set) var appName: String
   public private(set) var url: String
-  public private(set) var refreshInterval: Int
+  public private(set) var refreshInterval: TimeInterval
   public private(set) var strategies: [Strategy]
   public var delegate: UnleashDelegate?
   
@@ -46,7 +46,7 @@ public class Unleash {
   public convenience init(
     appName: String,
     url: String,
-    refreshInterval: Int = 3600,
+    refreshInterval: TimeInterval = 3600,
     strategies: [Strategy] = []
   ) {
     let clientRegistration: ClientRegistration = ClientRegistration(appName: appName, strategies: strategies)
@@ -73,7 +73,7 @@ public class Unleash {
     toggleRepository: ToggleRepositoryProtocol,
     appName: String,
     url: String,
-    refreshInterval: Int,
+    refreshInterval: TimeInterval,
     strategies: [Strategy],
     repeater: Repeater? = nil,
     scheduler: Scheduler? = nil
@@ -88,15 +88,20 @@ public class Unleash {
     if let repeater = repeater {
       self.repeater = repeater
     } else {
-      self.repeater = UnleashRepeater.initialize(maxAttempts: 3, delayBeforeRetry: 60)
+      self.repeater = UnleashRepeater.initialize(
+        maxAttempts: Defaults.defaultMaxAttempts,
+        delayBeforeRetry: Defaults.defaultRetryInterval
+      )
     }
     
     if let scheduler = scheduler {
       self.scheduler = scheduler
     } else {
-      let interval = TimeInterval(refreshInterval)
-      let shouldPoll = interval > 0
-      self.scheduler = UnleashScheduler.scheduler(interval: interval, repeats: shouldPoll)
+      let shouldPoll = refreshInterval > Defaults.pollingThresholdMinimum
+      self.scheduler = UnleashScheduler.scheduler(
+        interval: refreshInterval,
+        repeats: shouldPoll
+      )
     }
     
     self.start(client: clientRegistration)
@@ -119,7 +124,10 @@ public class Unleash {
   
   // MARK: Register
   private func register(body: ClientRegistration, completion: @escaping (Error?) -> Void) {
-    guard let url = URL(string: self.url) else { return completion(UnleashError.noURLProvided) }
+    guard
+      let url = URL(string: self.url)
+      else { return completion(UnleashError.noURLProvided) }
+    
     _ = self.registerService.register(url: url, body: body)
       .tap({ result in
         switch result {
@@ -141,7 +149,10 @@ public class Unleash {
   
   // MARK: Fetch Toggles
   private func fetchToggles(completion: @escaping (Error?) -> Void) {
-    guard let url = URL(string: self.url) else { return completion(UnleashError.noURLProvided) }
+    guard
+      let url = URL(string: self.url)
+      else { return completion(UnleashError.noURLProvided) }
+    
     _ = self.toggleRepository.get(url: url)
       .tap { result in
         switch result {
@@ -168,8 +179,10 @@ public class Unleash {
       else { return false }
     
     for strategy in feature.strategies {
-      guard let targetStrategy = strategies.first(where: { $0.name == strategy.name }) else { continue }
-      guard let parameters = strategy.parameters else { continue }
+      guard
+        let targetStrategy = strategies.first(where: { $0.name == strategy.name }),
+        let parameters = strategy.parameters
+        else { continue }
       
       if targetStrategy.isEnabled(parameters: parameters) {
         return true

@@ -16,7 +16,7 @@ class UnleashSpec : QuickSpec {
     override func spec() {
         let appName: String = "test"
         let url: String = "https://test.com"
-        let interval: Int = 3232
+        let interval: TimeInterval = 3232
         var clientRegistration: ClientRegistration = ClientRegistration(appName: appName, strategies: [])
         var registerService: RegisterServiceProtocol?
         var toggleRepository: ToggleRepositoryProtocol?

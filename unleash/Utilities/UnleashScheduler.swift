@@ -29,7 +29,10 @@ final class UnleashScheduler: Scheduler {
     self.repeats = repeats
   }
   
-  static func scheduler(interval: TimeInterval = 1800, repeats: Bool = false) -> UnleashScheduler {
+  static func scheduler(
+    interval: TimeInterval = Defaults.defaultRefreshInterval,
+    repeats: Bool = false
+  ) -> UnleashScheduler {
     return UnleashScheduler(interval: interval, repeats: repeats)
   }
   

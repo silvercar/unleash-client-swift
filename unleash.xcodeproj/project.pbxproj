@@ -64,6 +64,7 @@
 		9DEA495E22D7EE8C006FB13A /* Unleash.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DEA495022D7EE8C006FB13A /* Unleash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F136C3B1233E73B200504CC1 /* UnleashScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */; };
 		F1EEDDC323466ADA006BDCC1 /* UnleashRepeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC223466ADA006BDCC1 /* UnleashRepeater.swift */; };
+		F1EEDDC72346D465006BDCC1 /* UnleashDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		9DEA495D22D7EE8C006FB13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashScheduler.swift; path = unleash/Utilities/UnleashScheduler.swift; sourceTree = SOURCE_ROOT; };
 		F1EEDDC223466ADA006BDCC1 /* UnleashRepeater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashRepeater.swift; path = unleash/Utilities/UnleashRepeater.swift; sourceTree = SOURCE_ROOT; };
+		F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashDefaults.swift; path = unleash/UnleashDefaults.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 				9D1C644D22DFB87A0069FD45 /* DebugLogger.swift */,
 				9D7606562314D2FE00B4217F /* ToggleRepository.swift */,
 				9D2C1CA822D9155300721A2D /* Unleash.swift */,
+				F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */,
 			);
 			path = Unleash;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				9D1C646122E0D5D50069FD45 /* VariantDefinition.swift in Sources */,
 				9D1C644E22DFB87A0069FD45 /* DebugLogger.swift in Sources */,
 				9D7606572314D2FE00B4217F /* ToggleRepository.swift in Sources */,
+				F1EEDDC72346D465006BDCC1 /* UnleashDefaults.swift in Sources */,
 				F1EEDDC323466ADA006BDCC1 /* UnleashRepeater.swift in Sources */,
 				9D22731F23109EAD001CDD08 /* MemoryCache.swift in Sources */,
 				9D2C1CA922D9155300721A2D /* Unleash.swift in Sources */,

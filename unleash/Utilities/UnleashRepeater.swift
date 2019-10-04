@@ -30,13 +30,16 @@ class UnleashRepeater: Repeater {
     self.delayBeforeRetry = delayBeforeRetry
   }
   
-  class func initialize(maxAttempts: Int = 3, delayBeforeRetry: TimeInterval = 60) -> UnleashRepeater {
+  class func initialize(
+    maxAttempts: Int = Defaults.defaultMaxAttempts,
+    delayBeforeRetry: TimeInterval = Defaults.defaultRetryInterval
+  ) -> UnleashRepeater {
     return UnleashRepeater(maxAttempts: maxAttempts, delayBeforeRetry: delayBeforeRetry)
   }
   
   // MARK: Methods
   func attempt(action: @escaping () throws -> Void) throws {
-    self.attempts += 1
+    attempts += 1
     do {
       try action()
     } catch let actionError {
@@ -48,7 +51,7 @@ class UnleashRepeater: Repeater {
   @discardableResult
   func attempt<T>(action: @escaping () -> Promise<T>) -> Promise<T> {
     func attempt() -> Promise<T> {
-      self.attempts += 1
+      attempts += 1
       return action()
       .recover { error -> Promise<T> in
         guard self.attempts < self.maxAttempts else { throw error }
