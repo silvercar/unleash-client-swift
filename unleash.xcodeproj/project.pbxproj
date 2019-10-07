@@ -65,6 +65,7 @@
 		F136C3B1233E73B200504CC1 /* UnleashScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */; };
 		F1EEDDC72346D465006BDCC1 /* UnleashDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */; };
 		F1EEDDCA2346DDAF006BDCC1 /* UnleashSchedulerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC92346DDAF006BDCC1 /* UnleashSchedulerSpec.swift */; };
+		F1EEDDCF234BCA59006BDCC1 /* SchedulerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDCE234BCA59006BDCC1 /* SchedulerMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashScheduler.swift; path = unleash/Utilities/UnleashScheduler.swift; sourceTree = SOURCE_ROOT; };
 		F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashDefaults.swift; path = unleash/UnleashDefaults.swift; sourceTree = SOURCE_ROOT; };
 		F1EEDDC92346DDAF006BDCC1 /* UnleashSchedulerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashSchedulerSpec.swift; path = unleashTests/Utilities/UnleashSchedulerSpec.swift; sourceTree = SOURCE_ROOT; };
+		F1EEDDCE234BCA59006BDCC1 /* SchedulerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SchedulerMock.swift; path = unleashTests/Utilities/SchedulerMock.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				F1EEDDC92346DDAF006BDCC1 /* UnleashSchedulerSpec.swift */,
+				F1EEDDCE234BCA59006BDCC1 /* SchedulerMock.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				9D2FBD2C230F05B5000BAAF9 /* ActivationStrategyBuilder.swift in Sources */,
 				9D2FBD28230EFEEE000BAAF9 /* FeatureBuilder.swift in Sources */,
 				9D76064D2314258C00B4217F /* MemoryCacheSpec.swift in Sources */,
+				F1EEDDCF234BCA59006BDCC1 /* SchedulerMock.swift in Sources */,
 				F1EEDDCA2346DDAF006BDCC1 /* UnleashSchedulerSpec.swift in Sources */,
 				9D2C1CCC22D9878F00721A2D /* ClientRegistrationSpec.swift in Sources */,
 				9D1C644422DF93900069FD45 /* ClientRegistrationBuilder.swift in Sources */,

@@ -9,16 +9,25 @@
 import Foundation
 import PromiseKit
 
+// MARK: Scheduler State
+enum SchedulerState {
+  case cancelled
+  case resumed
+  case suspended
+}
+
 protocol Scheduler {
   var delay: TimeInterval { get }
   var interval: TimeInterval { get }
   var maxAttempts: Int? { get }
   var attempts: Int { get }
   var delegate: SchedulerDelegate? { get set }
+  var state: SchedulerState { get }
   
-  static func after(_ delay: TimeInterval, repeating interval: TimeInterval, maxAttempts: Int?) -> Scheduler
+  static func after(delay: TimeInterval, repeatingInterval interval: TimeInterval, maxAttempts: Int?) -> Scheduler
   static func every(interval: TimeInterval, maxAttempts: Int?) -> Scheduler
   func `do`(_ action: @escaping () throws -> Void)
+  func activate()
   func resume()
   func suspend()
   func cancel()
@@ -30,36 +39,36 @@ protocol SchedulerDelegate {
 
 class UnleashScheduler: Scheduler {
   
-  // MARK: Scheduler State
-  enum State {
-    case cancelled
-    case resumed
-    case suspended
-  }
-  
   // MARK: Properties
   let delay: TimeInterval
   let interval: TimeInterval
   let maxAttempts: Int?
   var delegate: SchedulerDelegate?
   private var timer: DispatchSourceTimer?
-  private(set) var state: State = .suspended
+  private(set) var state: SchedulerState = .suspended
   private(set) var attempts = 0
   
   // MARK: Init
-  private init(delay: TimeInterval = 0, interval: TimeInterval = 0, maxAttempts: Int? = nil) {
+  private init(delay: TimeInterval, interval: TimeInterval, maxAttempts: Int?) {
     self.delay = delay
     self.interval = interval
     self.maxAttempts = maxAttempts
   }
   
+  deinit {
+    if state != .resumed && state != .cancelled {
+      // Needs to be resumed so timer can be deallocated appropriately, as mentioned in docs.
+      timer?.resume()
+    }
+  }
+  
   // MARK: Static Methods
-  static func after(_ delay: TimeInterval = 0, repeating interval: TimeInterval = 0, maxAttempts: Int? = nil) -> Scheduler {
+  class func after(delay: TimeInterval = 0, repeatingInterval interval: TimeInterval = 0, maxAttempts: Int? = nil) -> Scheduler {
     return UnleashScheduler(delay: delay, interval: interval, maxAttempts: maxAttempts)
   }
   
-  static func every(interval: TimeInterval, maxAttempts: Int? = nil) -> Scheduler {
-    return UnleashScheduler(interval: interval, maxAttempts: maxAttempts)
+  class func every(interval: TimeInterval = 0, maxAttempts: Int? = nil) -> Scheduler {
+    return UnleashScheduler(delay: 0, interval: interval, maxAttempts: maxAttempts)
   }
   
   // MARK: - Methods
@@ -71,40 +80,49 @@ class UnleashScheduler: Scheduler {
       do {
         try action()
       } catch {
-        guard let self = self else { return }
-        if let maxAttempts = self.maxAttempts {
-          if self.attempts < maxAttempts {
-            self.cancel()
+        if let self = self {
+          self.attempts += 1
+          if let maxAttempts = self.maxAttempts {
+            if self.attempts >= maxAttempts {
+              self.delegate?.schedulerDidFail(self, withError: error)
+              self.cancel()
+            }
+          } else {
             self.delegate?.schedulerDidFail(self, withError: error)
           }
-        } else {
-          self.delegate?.schedulerDidFail(self, withError: error)
         }
       }
     }
-    resume()
   }
   
   func `do`(_ action: @escaping () throws -> Void) {
     schedule(action)
   }
   
+  func activate() {
+    if state != .resumed {
+      state = .resumed
+      timer?.activate()
+    }
+  }
+  
   func resume() {
-    guard state != .resumed else { return }
-    state = .resumed
-    timer?.resume()
+    if state != .resumed {
+      state = .resumed
+      timer?.resume()
+    }
   }
   
   func suspend() {
-    guard state != .suspended else { return }
-    state = .suspended
-    timer?.suspend()
+    if state != .suspended {
+      state = .suspended
+      timer?.suspend()
+    }
   }
   
   func cancel() {
-    timer?.setEventHandler {}
     if state == .suspended {
-      timer?.resume()
+      resume()
     }
     state = .cancelled
     timer?.cancel()

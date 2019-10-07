@@ -100,6 +100,7 @@ public class Unleash {
       self.scheduler.do {
         _ = self.fetchToggles().done { self.delegate?.unleashDidLoad(self) }
       }
+      self.scheduler.resume()
       return .value(())
     }
     .catch { self.delegate?.unleashDidFail(self, withError: $0) }
