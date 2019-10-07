@@ -8,9 +8,13 @@
 import UIKit
 import Unleash
 
-// This constant is to emulate a client knowing its target environment is (e.g. QA, Production)
 struct Constants {
-  static let environment: String = "QA"
+  // This constant is to emulate a client knowing its target environment is (e.g. qa, stage, production)
+  static let environment: String = "qa"
+  static let appName = "ios-unleash-sample-app"
+  static let unleashUrl = "https://unleash.silvercar.com/api"
+  static let featureToggleName = "enable-ios-unleash-sample-app"
+  static let errorTitle = "Unleash Error"
 }
 
 class ViewController: UIViewController {
@@ -32,27 +36,40 @@ class ViewController: UIViewController {
     
     isLoading = true
     unleash = Unleash(
-      appName: "ios-unleash-sample-app",
-      url: "https://unleash.silvercar.com/api",
-      refreshInterval: 300000,
+      appName: Constants.appName,
+      url: Constants.unleashUrl,
+      refreshInterval: 10,
       strategies: [EnvironmentStrategy()])
     unleash.delegate = self
   }
+  
+  private func refresh() {
+    isFeatureEnabled.text = ""
+    isLoading = true
+    isFeatureEnabled.text = "\(unleash.isEnabled(name: Constants.featureToggleName))"
+    isLoading = false
+  }
 }
 
-// MARK: - UnleashDelegate
+// MARK: UnleashDelegate
 extension ViewController: UnleashDelegate {
-  func unleashDidFetchToggles(_ unleash: Unleash) {
-    isLoading = false
-    isFeatureEnabled?.text = "\(unleash.isEnabled(name: "enable-auth0-in-admin-client"))"
+  func unleashDidLoad(_ unleash: Unleash) {
+    refresh()
   }
   
-  func unleash(_ unleash: Unleash, didFailWithError error: Error) {
-    isLoading = false
-    isFeatureEnabled?.text = "Unleash Failed: \(error.localizedDescription)"
+  func unleashDidFail(_ unleash: Unleash, withError error: Error) {
+    let alertController = UIAlertController(
+      title: Constants.errorTitle,
+      message: error.localizedDescription,
+      preferredStyle: .alert)
+    
+    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+    alertController.addAction(action)
+    present(alertController, animated: true, completion: nil)
   }
 }
 
+// MARK: EnvironmentStrategy
 class EnvironmentStrategy: Strategy {    
   var name: String {
     return "environment"

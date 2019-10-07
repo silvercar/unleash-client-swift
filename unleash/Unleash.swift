@@ -9,16 +9,21 @@ import Foundation
 import PMKFoundation
 import PromiseKit
 
-// MARK: - UnleashDelegate Protocol
-public protocol UnleashDelegate: AnyObject {
-  func unleashDidFetchToggles(_ unleash: Unleash)
-  func unleash(_ unleash: Unleash, didFailWithError error: Error)
+// MARK: - UnleashError
+public enum UnleashError: Error {
+  case noURLProvided
+  case maxRetriesReached
 }
 
 // MARK: - Strategy
 public protocol Strategy {
   var name: String { get }
   func isEnabled(parameters: [String: String]) -> Bool
+}
+
+public protocol UnleashDelegate {
+  func unleashDidLoad(_ unleash: Unleash)
+  func unleashDidFail(_ unleash: Unleash, withError error: Error)
 }
 
 // MARK: - Unleash
@@ -28,19 +33,19 @@ public class Unleash {
   private var registerService: RegisterServiceProtocol
   private var toggleRepository: ToggleRepositoryProtocol
   private var toggles: Toggles? { return toggleRepository.toggles }
+  private var scheduler: Scheduler
   
   public private(set) var appName: String
   public private(set) var url: String
-  public private(set) var refreshInterval: Int?
+  public private(set) var refreshInterval: TimeInterval
   public private(set) var strategies: [Strategy]
-  
-  public weak var delegate: UnleashDelegate?
+  public var delegate: UnleashDelegate?
   
   // MARK: - Lifecycle - Public Init
   public convenience init(
     appName: String,
     url: String,
-    refreshInterval: Int?,
+    refreshInterval: TimeInterval = 3600,
     strategies: [Strategy] = []
   ) {
     let clientRegistration: ClientRegistration = ClientRegistration(appName: appName, strategies: strategies)
@@ -67,8 +72,9 @@ public class Unleash {
     toggleRepository: ToggleRepositoryProtocol,
     appName: String,
     url: String,
-    refreshInterval: Int?,
-    strategies: [Strategy]
+    refreshInterval: TimeInterval,
+    strategies: [Strategy],
+    scheduler: Scheduler? = nil
   ) {
     self.registerService = registerService
     self.toggleRepository = toggleRepository
@@ -77,42 +83,79 @@ public class Unleash {
     self.refreshInterval = refreshInterval
     self.strategies = strategies
     
-    register(body: clientRegistration)
-    .then { self.toggleRepository.get(url: URL(string: url)!) }
-    .done { _ in self.delegate?.unleashDidFetchToggles(self) }
-    .catch { error in
-      log("error \(error)")
-      self.delegate?.unleash(self, didFailWithError: error)
+    if let scheduler = scheduler {
+      self.scheduler = scheduler
+    } else {
+      self.scheduler = UnleashScheduler.every(interval: Defaults.defaultRetryInterval)
     }
+    self.scheduler.delegate = self
+    
+    start(client: clientRegistration)
   }
   
-  // MARK: - Register
+  // MARK: Start
+  private func start(client: ClientRegistration) {
+    register(body: client)
+    .then { response -> Promise<Void> in
+      self.scheduler.do {
+        _ = self.fetchToggles().done { self.delegate?.unleashDidLoad(self) }
+      }
+      self.scheduler.resume()
+      return .value(())
+    }
+    .catch { self.delegate?.unleashDidFail(self, withError: $0) }
+  }
+  
+  // MARK: Register
+  private func register(body: ClientRegistration, completion: @escaping (Error?) -> Void) {
+    guard
+      let url = URL(string: self.url)
+      else { return completion(UnleashError.noURLProvided) }
+    
+    _ = registerService.register(url: url, body: body)
+    .tap({ result in
+      switch result {
+      case .fulfilled(let response):
+         log("Unleash registered client \(body.instanceId) with response \(response ?? [:])")
+        completion(nil)
+      case .rejected(let error):
+        completion(error)
+      }
+    })
+  }
+  
+  @discardableResult
   private func register(body: ClientRegistration) -> Promise<Void> {
-    return attempt(maximumRetryCount: 3, delayBeforeRetry: .seconds(60)) {
-      self.registerService.register(url: URL(string: self.url)!, body: body)
-    }.done { response in
-      log("Unleash registered client \(body.instanceId) with response \(response ?? [:])")
+    return Promise { resolver in
+      self.register(body: body) { error in resolver.resolve(error) }
     }
   }
   
-  // MARK: - Attempt
-  private func attempt<T>(
-    maximumRetryCount: Int,
-    delayBeforeRetry: DispatchTimeInterval,
-    _ body: @escaping () -> Promise<T>
-  ) -> Promise<T> {
-    var attempts = 0
-    func attempt() -> Promise<T> {
-      attempts += 1
-      return body().recover { error -> Promise<T> in
-        guard attempts < maximumRetryCount else { throw error }
-        return after(delayBeforeRetry).then(on: nil, attempt)
+  // MARK: Fetch Toggles
+  private func fetchToggles(completion: @escaping (Error?) -> Void) {
+    guard
+      let url = URL(string: self.url)
+      else { return completion(UnleashError.noURLProvided) }
+    
+    _ = toggleRepository.get(url: url)
+    .tap { result in
+      switch result {
+      case .fulfilled(_):
+        completion(nil)
+      case .rejected(let error):
+        completion(error)
       }
     }
-    return attempt()
   }
   
-  // MARK: - Is Enabled
+  @discardableResult
+  private func fetchToggles() -> Promise<Void> {
+    return Promise { resolver in
+      self.fetchToggles { error in resolver.resolve(error) }
+    }
+  }
+  
+  // MARK: Is Enabled
   public func isEnabled(name: String) -> Bool {
     guard
       let feature = toggles?.features.first(where: { $0.name == name }),
@@ -120,14 +163,22 @@ public class Unleash {
       else { return false }
     
     for strategy in feature.strategies {
-      guard let targetStrategy = strategies.first(where: { $0.name == strategy.name }) else { continue }
-      guard let parameters = strategy.parameters else { continue }
+      guard
+        let targetStrategy = strategies.first(where: { $0.name == strategy.name }),
+        let parameters = strategy.parameters
+        else { continue }
       
       if targetStrategy.isEnabled(parameters: parameters) {
         return true
       }
     }
-    
     return false
+  }
+}
+
+// MARK: - Scheduler Delegate
+extension Unleash: SchedulerDelegate {
+  func schedulerDidFail(_ scheduler: Scheduler, withError error: Error) {
+    delegate?.unleashDidFail(self, withError: error)
   }
 }
