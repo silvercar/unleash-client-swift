@@ -33,7 +33,6 @@ public class Unleash {
   private var registerService: RegisterServiceProtocol
   private var toggleRepository: ToggleRepositoryProtocol
   private var toggles: Toggles? { return toggleRepository.toggles }
-  private var repeater: Repeater
   private var scheduler: Scheduler
   
   public private(set) var appName: String
@@ -75,7 +74,6 @@ public class Unleash {
     url: String,
     refreshInterval: TimeInterval,
     strategies: [Strategy],
-    repeater: Repeater? = nil,
     scheduler: Scheduler? = nil
   ) {
     self.registerService = registerService
@@ -85,39 +83,24 @@ public class Unleash {
     self.refreshInterval = refreshInterval
     self.strategies = strategies
     
-    if let repeater = repeater {
-      self.repeater = repeater
-    } else {
-      self.repeater = UnleashRepeater.initialize(
-        maxAttempts: Defaults.defaultMaxAttempts,
-        delayBeforeRetry: Defaults.defaultRetryInterval
-      )
-    }
-    
     if let scheduler = scheduler {
       self.scheduler = scheduler
     } else {
-      let shouldPoll = refreshInterval > Defaults.pollingThresholdMinimum
-      self.scheduler = UnleashScheduler.scheduler(
-        interval: refreshInterval,
-        repeats: shouldPoll
-      )
+      self.scheduler = UnleashScheduler.every(interval: Defaults.defaultRetryInterval)
     }
+    self.scheduler.delegate = self
     
-    self.start(client: clientRegistration)
+    start(client: clientRegistration)
   }
   
   // MARK: Start
   private func start(client: ClientRegistration) {
-    repeater.attempt { () -> Promise<Void> in
-      return self.register(body: client)
-      .then { response -> Promise<Void> in
-        self.scheduler.do {
-          _ = self.fetchToggles().done { self.delegate?.unleashDidLoad(self) }
-        }
-        .start()
-        return .value(())
+    register(body: client)
+    .then { response -> Promise<Void> in
+      self.scheduler.do {
+        _ = self.fetchToggles().done { self.delegate?.unleashDidLoad(self) }
       }
+      return .value(())
     }
     .catch { self.delegate?.unleashDidFail(self, withError: $0) }
   }
@@ -128,16 +111,16 @@ public class Unleash {
       let url = URL(string: self.url)
       else { return completion(UnleashError.noURLProvided) }
     
-    _ = self.registerService.register(url: url, body: body)
-      .tap({ result in
-        switch result {
-        case .fulfilled(let response):
-           log("Unleash registered client \(body.instanceId) with response \(response ?? [:])")
-          completion(nil)
-        case .rejected(let error):
-          completion(error)
-        }
-      })
+    _ = registerService.register(url: url, body: body)
+    .tap({ result in
+      switch result {
+      case .fulfilled(let response):
+         log("Unleash registered client \(body.instanceId) with response \(response ?? [:])")
+        completion(nil)
+      case .rejected(let error):
+        completion(error)
+      }
+    })
   }
   
   @discardableResult
@@ -153,15 +136,15 @@ public class Unleash {
       let url = URL(string: self.url)
       else { return completion(UnleashError.noURLProvided) }
     
-    _ = self.toggleRepository.get(url: url)
-      .tap { result in
-        switch result {
-        case .fulfilled(_):
-          completion(nil)
-        case .rejected(let error):
-          completion(error)
-        }
+    _ = toggleRepository.get(url: url)
+    .tap { result in
+      switch result {
+      case .fulfilled(_):
+        completion(nil)
+      case .rejected(let error):
+        completion(error)
       }
+    }
   }
   
   @discardableResult
@@ -189,5 +172,12 @@ public class Unleash {
       }
     }
     return false
+  }
+}
+
+// MARK: - Scheduler Delegate
+extension Unleash: SchedulerDelegate {
+  func schedulerDidFail(_ scheduler: Scheduler, withError error: Error) {
+    delegate?.unleashDidFail(self, withError: error)
   }
 }

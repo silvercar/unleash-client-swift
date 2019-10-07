@@ -63,8 +63,8 @@
 		9DEA495722D7EE8C006FB13A /* Unleash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEA494D22D7EE8C006FB13A /* Unleash.framework */; };
 		9DEA495E22D7EE8C006FB13A /* Unleash.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DEA495022D7EE8C006FB13A /* Unleash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F136C3B1233E73B200504CC1 /* UnleashScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */; };
-		F1EEDDC323466ADA006BDCC1 /* UnleashRepeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC223466ADA006BDCC1 /* UnleashRepeater.swift */; };
 		F1EEDDC72346D465006BDCC1 /* UnleashDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */; };
+		F1EEDDCA2346DDAF006BDCC1 /* UnleashSchedulerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC92346DDAF006BDCC1 /* UnleashSchedulerSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,7 +123,7 @@
 		9D2C1CA822D9155300721A2D /* Unleash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Unleash.swift; path = unleash/Unleash.swift; sourceTree = SOURCE_ROOT; };
 		9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
 		9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
-		9D2C1CB422D9784F00721A2D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Extension.swift"; path = "unleash/Date+Extension.swift"; sourceTree = SOURCE_ROOT; };
+		9D2C1CB422D9784F00721A2D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Extension.swift"; path = "Unleash/Extensions/Date+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		9D2C1CB722D9787C00721A2D /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppInfo.swift; path = unleash/AppInfo.swift; sourceTree = SOURCE_ROOT; };
 		9D2C1CBF22D97B8000721A2D /* Date+ExtensionSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+ExtensionSpec.swift"; path = "unleashTests/Date+ExtensionSpec.swift"; sourceTree = SOURCE_ROOT; };
 		9D2C1CC722D985A200721A2D /* ClientRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClientRegistration.swift; path = unleash/Models/ClientRegistration.swift; sourceTree = SOURCE_ROOT; };
@@ -147,8 +147,8 @@
 		9DEA495622D7EE8C006FB13A /* UnleashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnleashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DEA495D22D7EE8C006FB13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashScheduler.swift; path = unleash/Utilities/UnleashScheduler.swift; sourceTree = SOURCE_ROOT; };
-		F1EEDDC223466ADA006BDCC1 /* UnleashRepeater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashRepeater.swift; path = unleash/Utilities/UnleashRepeater.swift; sourceTree = SOURCE_ROOT; };
 		F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashDefaults.swift; path = unleash/UnleashDefaults.swift; sourceTree = SOURCE_ROOT; };
+		F1EEDDC92346DDAF006BDCC1 /* UnleashSchedulerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashSchedulerSpec.swift; path = unleashTests/Utilities/UnleashSchedulerSpec.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +314,7 @@
 		9DEA494F22D7EE8C006FB13A /* Unleash */ = {
 			isa = PBXGroup;
 			children = (
+				F1EEDDCB2347BCA8006BDCC1 /* Extensions */,
 				F136C3AF233E731D00504CC1 /* Utilities */,
 				9D22731D23109AD8001CDD08 /* Data */,
 				9D2C1CC622D9853A00721A2D /* Models */,
@@ -322,7 +323,6 @@
 				9DEA495022D7EE8C006FB13A /* Unleash.h */,
 				9DEA495122D7EE8C006FB13A /* Info.plist */,
 				9D2C1CB722D9787C00721A2D /* AppInfo.swift */,
-				9D2C1CB422D9784F00721A2D /* Date+Extension.swift */,
 				9D1C644D22DFB87A0069FD45 /* DebugLogger.swift */,
 				9D7606562314D2FE00B4217F /* ToggleRepository.swift */,
 				9D2C1CA822D9155300721A2D /* Unleash.swift */,
@@ -334,6 +334,7 @@
 		9DEA495A22D7EE8C006FB13A /* UnleashTests */ = {
 			isa = PBXGroup;
 			children = (
+				F1EEDDC82346DD8A006BDCC1 /* Utilities */,
 				9D76064B2314255000B4217F /* Data */,
 				9D2C1CCA22D9877500721A2D /* Models */,
 				9D1C643122DEB8780069FD45 /* Services */,
@@ -352,9 +353,24 @@
 			isa = PBXGroup;
 			children = (
 				F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */,
-				F1EEDDC223466ADA006BDCC1 /* UnleashRepeater.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F1EEDDC82346DD8A006BDCC1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F1EEDDC92346DDAF006BDCC1 /* UnleashSchedulerSpec.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F1EEDDCB2347BCA8006BDCC1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9D2C1CB422D9784F00721A2D /* Date+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -544,7 +560,6 @@
 				9D1C644E22DFB87A0069FD45 /* DebugLogger.swift in Sources */,
 				9D7606572314D2FE00B4217F /* ToggleRepository.swift in Sources */,
 				F1EEDDC72346D465006BDCC1 /* UnleashDefaults.swift in Sources */,
-				F1EEDDC323466ADA006BDCC1 /* UnleashRepeater.swift in Sources */,
 				9D22731F23109EAD001CDD08 /* MemoryCache.swift in Sources */,
 				9D2C1CA922D9155300721A2D /* Unleash.swift in Sources */,
 				9D1C646722E0D7800069FD45 /* VariantOverride.swift in Sources */,
@@ -564,6 +579,7 @@
 				9D2FBD2C230F05B5000BAAF9 /* ActivationStrategyBuilder.swift in Sources */,
 				9D2FBD28230EFEEE000BAAF9 /* FeatureBuilder.swift in Sources */,
 				9D76064D2314258C00B4217F /* MemoryCacheSpec.swift in Sources */,
+				F1EEDDCA2346DDAF006BDCC1 /* UnleashSchedulerSpec.swift in Sources */,
 				9D2C1CCC22D9878F00721A2D /* ClientRegistrationSpec.swift in Sources */,
 				9D1C644422DF93900069FD45 /* ClientRegistrationBuilder.swift in Sources */,
 				9D2FBD2A230F0209000BAAF9 /* ToggleServiceMock.swift in Sources */,
