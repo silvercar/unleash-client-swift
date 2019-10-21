@@ -62,9 +62,7 @@
 		9DEA495E22D7EE8C006FB13A /* Unleash.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DEA495022D7EE8C006FB13A /* Unleash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F136C3B1233E73B200504CC1 /* UnleashScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */; };
 		F188AA2B2356625300A84AC7 /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; };
-		F188AA2C2356625300A84AC7 /* PMKFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F188AA2E2356625400A84AC7 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */; };
-		F188AA2F2356625400A84AC7 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1EEDDC72346D465006BDCC1 /* UnleashDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */; };
 		F1EEDDCA2346DDAF006BDCC1 /* UnleashSchedulerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC92346DDAF006BDCC1 /* UnleashSchedulerSpec.swift */; };
 		F1EEDDCF234BCA59006BDCC1 /* SchedulerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDCE234BCA59006BDCC1 /* SchedulerMock.swift */; };
@@ -93,18 +91,6 @@
 				9D6D420122D7F043005D36A3 /* Quick.framework in CopyFiles */,
 				9D6D420222D7F043005D36A3 /* Nimble.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F188AA2D2356625300A84AC7 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				F188AA2C2356625300A84AC7 /* PMKFoundation.framework in Embed Frameworks */,
-				F188AA2F2356625400A84AC7 /* PromiseKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -426,9 +412,8 @@
 			buildConfigurationList = 9DEA496122D7EE8C006FB13A /* Build configuration list for PBXNativeTarget "Unleash" */;
 			buildPhases = (
 				9DEA494822D7EE8C006FB13A /* Headers */,
-				9DEA494922D7EE8C006FB13A /* Sources */,
 				9DEA494A22D7EE8C006FB13A /* Frameworks */,
-				F188AA2D2356625300A84AC7 /* Embed Frameworks */,
+				9DEA494922D7EE8C006FB13A /* Sources */,
 			);
 			buildRules = (
 			);
@@ -777,7 +762,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -796,13 +781,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.silvercar.Unleash;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = "";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USE_HEADERMAP = NO;
+				USE_HEADERMAP = YES;
 			};
 			name = Debug;
 		};
@@ -812,7 +797,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -831,12 +816,12 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.silvercar.Unleash;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = "";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USE_HEADERMAP = NO;
+				USE_HEADERMAP = YES;
 			};
 			name = Release;
 		};
