@@ -8,7 +8,6 @@
 import Foundation
 import Nimble
 import OHHTTPStubs.Swift
-import PMKFoundation
 import PromiseKit
 import Quick
 
