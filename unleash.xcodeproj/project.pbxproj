@@ -38,9 +38,7 @@
 		9D2C1CB522D9784F00721A2D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CB422D9784F00721A2D /* Date+Extension.swift */; };
 		9D2C1CB822D9787C00721A2D /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CB722D9787C00721A2D /* AppInfo.swift */; };
 		9D2C1CC022D97B8000721A2D /* Date+ExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CBF22D97B8000721A2D /* Date+ExtensionSpec.swift */; };
-		9D2C1CC122D97F2900721A2D /* PMKFoundation.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D2C1CC222D97F2900721A2D /* PromiseKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9D2C1CC322D97F3F00721A2D /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; };
 		9D2C1CC422D97F3F00721A2D /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */; };
 		9D2C1CC822D985A200721A2D /* ClientRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CC722D985A200721A2D /* ClientRegistration.swift */; };
 		9D2C1CCC22D9878F00721A2D /* ClientRegistrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CCB22D9878F00721A2D /* ClientRegistrationSpec.swift */; };
@@ -88,7 +86,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9D1C643B22DF7C2A0069FD45 /* OHHTTPStubs.framework in CopyFiles */,
-				9D2C1CC122D97F2900721A2D /* PMKFoundation.framework in CopyFiles */,
 				9D2C1CC222D97F2900721A2D /* PromiseKit.framework in CopyFiles */,
 				9D6D420122D7F043005D36A3 /* Quick.framework in CopyFiles */,
 				9D6D420222D7F043005D36A3 /* Nimble.framework in CopyFiles */,
@@ -188,7 +185,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D1C643A22DF7C1F0069FD45 /* OHHTTPStubs.framework in Frameworks */,
-				9D2C1CC322D97F3F00721A2D /* PMKFoundation.framework in Frameworks */,
 				9D2C1CC422D97F3F00721A2D /* PromiseKit.framework in Frameworks */,
 				9D6D41FF22D7F01F005D36A3 /* Quick.framework in Frameworks */,
 				9D6D41FD22D7F011005D36A3 /* Nimble.framework in Frameworks */,
@@ -568,11 +564,9 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unleash-UnleashTests/Pods-Unleash-UnleashTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unleash-UnleashTests/Pods-Unleash-UnleashTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
