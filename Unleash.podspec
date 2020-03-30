@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.swift_versions = ['4.2', '5.0', '5.1']
 
-  s.source_files = 'unleash/*.swift'
+  s.source_files = 'unleash/*'
 
   s.dependency 'PromiseKit', '~> 6.11'
 end
