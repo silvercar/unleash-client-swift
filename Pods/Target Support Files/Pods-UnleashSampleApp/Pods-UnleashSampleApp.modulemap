@@ -1,6 +1,0 @@
-framework module Pods_UnleashSampleApp {
-  umbrella header "Pods-UnleashSampleApp-umbrella.h"
-
-  export *
-  module * { export * }
-}
