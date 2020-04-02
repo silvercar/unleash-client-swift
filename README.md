@@ -1,6 +1,7 @@
 # Unleash client for Swift
 [![codecov](https://codecov.io/gh/silvercar/unleash-client-swift/branch/master/graph/badge.svg)](https://codecov.io/gh/silvercar/unleash-client-swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-compatible-blue)](https://github.com/CocoaPods/CocoaPods)
 
 This is the unofficial Swift client for Unleash. Read more about the [Unleash project](https://github.com/Unleash/unleash)
 **Version 3.x of the client requires `unleash-server` >= v3.x**
@@ -21,6 +22,24 @@ github "silvercar/unleash-client-swift" ~> 1.0
 ```
 
 Run `carthage update --platform ios` to build the framework and drag the built `Unleash.framework` into your Xcode project.
+
+### Using [Cocoapods](https://cocoapods.org/)
+CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It has over 71 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly.
+
+CocoaPods is built with Ruby and is installable with the default Ruby available on macOS. We recommend you use the default ruby.
+
+Using the default Ruby install can require you to use sudo when installing gems. Further installation instructions are in the guides.
+
+```
+$ sudo gem install cocoapods
+```
+
+To add the Unleash Swift Client into your Xcode project using Cocoapods, add the following to your `Podfile`:
+```
+pod 'Unleash'
+```
+
+Run `pod install` to build a new workspace for your iOS project
 
 ## Development
 ### Requirements:
