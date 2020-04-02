@@ -15,4 +15,5 @@ Pod::Spec.new do |s|
   s.source_files = 'unleash/*.swift', 'unleash/Data/*.swift', 'unleash/Extensions/*.swift', 'unleash/Models/*.swift', 'unleash/Services/*.swift', 'unleash/Strategies/*.swift', 'unleash/Utilities/*.swift'
 
   s.dependency 'PromiseKit', '~> 6.11'
+  s.dependency 'PromiseKit/Foundation' '~> 6.0'
 end
