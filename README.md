@@ -35,7 +35,7 @@ $ sudo gem install cocoapods
 
 To add the Unleash Swift Client into your Xcode project using Cocoapods, add the following to your `Podfile`:
 ```
-pod Unleash
+pod 'Unleash'
 ```
 
 Run `pod install` to build a new workspace for your iOS project
