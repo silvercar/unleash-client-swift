@@ -1,6 +1,7 @@
 # Unleash client for Swift
 [![codecov](https://codecov.io/gh/silvercar/unleash-client-swift/branch/master/graph/badge.svg)](https://codecov.io/gh/silvercar/unleash-client-swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-compatible-blue)](https://github.com/CocoaPods/CocoaPods)
 
 This is the unofficial Swift client for Unleash. Read more about the [Unleash project](https://github.com/Unleash/unleash)
 **Version 3.x of the client requires `unleash-server` >= v3.x**
