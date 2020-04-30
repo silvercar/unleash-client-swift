@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Carthage/Checkouts/Nimble/Nimble.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/OHHTTPStubs/OHHTTPStubs.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/Foundation/PMKFoundation.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/PromiseKit/PromiseKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/Quick/Quick.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:Unleash.xcodeproj">
+   </FileRef>
+</Workspace>

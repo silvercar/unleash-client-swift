@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ActivationStrategy: Codable {
+public class ActivationStrategy: Codable {
     var name: String
     var parameters: [String : String]?
     

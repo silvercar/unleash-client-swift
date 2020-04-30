@@ -5,7 +5,7 @@
 //  Copyright © 2019 Silvercar. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import Foundation;
 
 //! Project version number for Unleash.
 FOUNDATION_EXPORT double UnleashVersionNumber;

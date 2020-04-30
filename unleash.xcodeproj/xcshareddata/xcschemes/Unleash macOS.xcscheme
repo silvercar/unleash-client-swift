@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1140"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9D1C641422DD10650069FD45"
-               BuildableName = "UnleashSampleApp.app"
-               BlueprintName = "UnleashSampleApp"
+               BlueprintIdentifier = "F16780002458F8530009D8A0"
+               BuildableName = "Unleash.framework"
+               BlueprintName = "Unleash macOS"
+               ReferencedContainer = "container:Unleash.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F167805A2458FE7B0009D8A0"
+               BuildableName = "Unleash macOS Tests.xctest"
+               BlueprintName = "Unleash macOS Tests"
                ReferencedContainer = "container:Unleash.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,17 +43,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9D1C641422DD10650069FD45"
-            BuildableName = "UnleashSampleApp.app"
-            BlueprintName = "UnleashSampleApp"
-            ReferencedContainer = "container:Unleash.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -51,18 +54,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9D1C641422DD10650069FD45"
-            BuildableName = "UnleashSampleApp.app"
-            BlueprintName = "UnleashSampleApp"
-            ReferencedContainer = "container:Unleash.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -70,16 +61,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9D1C641422DD10650069FD45"
-            BuildableName = "UnleashSampleApp.app"
-            BlueprintName = "UnleashSampleApp"
+            BlueprintIdentifier = "F16780002458F8530009D8A0"
+            BuildableName = "Unleash.framework"
+            BlueprintName = "Unleash macOS"
             ReferencedContainer = "container:Unleash.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -7,6 +7,9 @@
 
 import Foundation
 import PromiseKit
+#if canImport(PMKFoundation)
+import PMKFoundation
+#endif
 
 struct RegisterService: RegisterServiceProtocol {}
 
@@ -18,7 +21,11 @@ extension RegisterService {
     func register(url: URL, body: ClientRegistration) -> Promise<[String: Any]?> {
         let registerUrl = url.appendingPathComponent("client/register")
         return firstly {
-            URLSession.shared.dataTask(.promise, with: try makeUrlRequest(url: registerUrl, body: body)).validate()
+          
+            URLSession.shared.dataTask(
+              .promise,
+              with: try makeUrlRequest(url: registerUrl, body: body)
+            ).validate()
         }.map {
             // Unleash will return 200 and then 202 when already registered
             return $0.data.isEmpty ? [:] : try JSONSerialization.jsonObject(with: $0.data) as? [String: Any]

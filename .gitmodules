@@ -1,0 +1,15 @@
+[submodule "Carthage/Checkouts/PromiseKit"]
+	path = Carthage/Checkouts/PromiseKit
+	url = ssh://git@github.com/mxcl/PromiseKit.git
+[submodule "Carthage/Checkouts/Quick"]
+	path = Carthage/Checkouts/Quick
+	url = ssh://git@github.com/Quick/Quick.git
+[submodule "Carthage/Checkouts/Nimble"]
+	path = Carthage/Checkouts/Nimble
+	url = ssh://git@github.com/Quick/Nimble.git
+[submodule "Carthage/Checkouts/OHHTTPStubs"]
+	path = Carthage/Checkouts/OHHTTPStubs
+	url = ssh://git@github.com/AliSoftware/OHHTTPStubs.git
+[submodule "Carthage/Checkouts/Foundation"]
+	path = Carthage/Checkouts/Foundation
+	url = ssh://git@github.com/PromiseKit/Foundation.git
