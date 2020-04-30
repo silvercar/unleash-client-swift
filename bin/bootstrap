@@ -1,4 +1,4 @@
 #!/bin/sh
 
-carthage bootstrap --platform ios
+carthage bootstrap --platform ios --use-submodules
 cp Cartfile.resolved Carthage

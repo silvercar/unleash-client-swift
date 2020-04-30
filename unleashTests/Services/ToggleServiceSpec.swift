@@ -23,7 +23,7 @@ class ToggleServiceSpec : QuickSpec {
         var urlRequest: URLRequest?
         
         afterEach {
-            HTTPStubs.removeAllStubs()
+            OHHTTPStubs.removeAllStubs()
         }
         
         describe("#fetchToggles") {
@@ -36,7 +36,7 @@ class ToggleServiceSpec : QuickSpec {
                 let json = try? encoder.encode(toggles)
                 stub(condition: { $0.url!.absoluteString == featureUrl }, response: { request in
                     urlRequest = request
-                    return HTTPStubsResponse(data: json!, statusCode: 200, headers: nil)
+                    return OHHTTPStubsResponse(data: json!, statusCode: 200, headers: nil)
                 })
             }
             

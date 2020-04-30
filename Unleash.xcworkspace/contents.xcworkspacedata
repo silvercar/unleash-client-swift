@@ -5,7 +5,7 @@
       location = "group:Carthage/Checkouts/Nimble/Nimble.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Carthage/Checkouts/OHHTTPStubs/OHHTTPStubs.xcodeproj">
+      location = "group:Carthage/Checkouts/OHHTTPStubs/OHHTTPStubs/OHHTTPStubs.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Carthage/Checkouts/Foundation/PMKFoundation.xcodeproj">

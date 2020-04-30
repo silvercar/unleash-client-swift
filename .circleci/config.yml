@@ -14,19 +14,19 @@ jobs:
           name: Run Danager
           command: bundle exec danger
       - restore_cache:
-          key: carthage-v1--{{ checksum "Cartfile.resolved" }}
+          key: carthage-v2--{{ checksum "Cartfile.resolved" }}
       - run:
           name: Carthage
           command: ./bin/bootstrap-if-needed
       - save_cache:
-          key: carthage-v1--{{ checksum "Cartfile.resolved" }}
+          key: carthage-v2--{{ checksum "Cartfile.resolved" }}
           paths:
             - "./Carthage"
       - run:
           name: execute tests
           command: |
             mkdir -p ~/test-results/xctest/
-            bundle exec fastlane scan --scheme "Unleash iOS" --device "iPhone X" --clean --output_directory="~/test-results/xctest/" --output_types="junit" --output_files="junit.xml" --code_coverage
+            bundle exec fastlane scan --workspace "Unleash.xcworkspace" --scheme "Unleash iOS" --device "iPhone X" --clean --output_directory="~/test-results/xctest/" --output_types="junit" --output_files="junit.xml" --code_coverage
       - run:
           name: Codecov
           command: bash <(curl -s https://codecov.io/bash)

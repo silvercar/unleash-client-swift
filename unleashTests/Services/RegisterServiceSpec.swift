@@ -21,7 +21,7 @@ class RegisterServiceSpec : QuickSpec {
         }
         
         afterEach {
-            HTTPStubs.removeAllStubs()
+            OHHTTPStubs.removeAllStubs()
         }
         
         describe("#register") {
@@ -33,7 +33,7 @@ class RegisterServiceSpec : QuickSpec {
                 
                 beforeEach {
                     stub(condition: { $0.url!.absoluteString == registerUrl }, response: { _ in
-                        HTTPStubsResponse(jsonObject: json, statusCode: 200, headers: nil)
+                        OHHTTPStubsResponse(jsonObject: json, statusCode: 200, headers: nil)
                     })
                 }
                 
@@ -73,7 +73,7 @@ class RegisterServiceSpec : QuickSpec {
             context("when registered") {
                 beforeEach {
                     stub(condition: { $0.url!.absoluteString == registerUrl }, response: { _ in
-                        HTTPStubsResponse(data: "".data(using: String.Encoding.utf8)!, statusCode: 202, headers: nil)
+                        OHHTTPStubsResponse(data: "".data(using: String.Encoding.utf8)!, statusCode: 202, headers: nil)
                     })
                 }
                 

@@ -18,5 +18,4 @@ Pod::Spec.new do |s|
   s.source_files = 'Sources/*.swift'
 
   s.dependency 'PromiseKit', '~> 6.11'
-  s.dependency 'PromiseKit/Foundation'
 end
