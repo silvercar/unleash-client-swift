@@ -7,6 +7,9 @@
 
 import Foundation
 import PromiseKit
+#if canImport(PMKFoundation)
+import PMKFoundation
+#endif
 
 struct ToggleService: ToggleServiceProtocol {
     private let appName: String

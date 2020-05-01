@@ -7,6 +7,9 @@
 
 import Foundation
 import PromiseKit
+#if canImport(PMKFoundation)
+import PMKFoundation
+#endif
 
 struct RegisterService: RegisterServiceProtocol {}
 
@@ -17,6 +20,7 @@ protocol RegisterServiceProtocol {
 extension RegisterService {
     func register(url: URL, body: ClientRegistration) -> Promise<[String: Any]?> {
         let registerUrl = url.appendingPathComponent("client/register")
+      
         return firstly {
             URLSession.shared.dataTask(.promise, with: try makeUrlRequest(url: registerUrl, body: body)).validate()
         }.map {

@@ -39,7 +39,7 @@
 		9D2C1CC022D97B8000721A2D /* Date+ExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CBF22D97B8000721A2D /* Date+ExtensionSpec.swift */; };
 		9D2C1CC122D97F2900721A2D /* PMKFoundation.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D2C1CC222D97F2900721A2D /* PromiseKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9D2C1CC322D97F3F00721A2D /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; };
+		9D2C1CC322D97F3F00721A2D /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9D2C1CC422D97F3F00721A2D /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */; };
 		9D2C1CC822D985A200721A2D /* ClientRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CC722D985A200721A2D /* ClientRegistration.swift */; };
 		9D2C1CCC22D9878F00721A2D /* ClientRegistrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CCB22D9878F00721A2D /* ClientRegistrationSpec.swift */; };
@@ -61,8 +61,6 @@
 		9DEA495722D7EE8C006FB13A /* Unleash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEA494D22D7EE8C006FB13A /* Unleash.framework */; };
 		9DEA495E22D7EE8C006FB13A /* Unleash.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DEA495022D7EE8C006FB13A /* Unleash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F136C3B1233E73B200504CC1 /* UnleashScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */; };
-		F188AA2B2356625300A84AC7 /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; };
-		F188AA2E2356625400A84AC7 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */; };
 		F1EEDDC72346D465006BDCC1 /* UnleashDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */; };
 		F1EEDDCA2346DDAF006BDCC1 /* UnleashSchedulerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC92346DDAF006BDCC1 /* UnleashSchedulerSpec.swift */; };
 		F1EEDDCF234BCA59006BDCC1 /* SchedulerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDCE234BCA59006BDCC1 /* SchedulerMock.swift */; };
@@ -148,6 +146,7 @@
 		9DEA495622D7EE8C006FB13A /* UnleashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnleashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DEA495D22D7EE8C006FB13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashScheduler.swift; path = unleash/Utilities/UnleashScheduler.swift; sourceTree = SOURCE_ROOT; };
+		F1A64D2E245BF2E700BDC769 /* Carthage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Carthage.xcconfig; sourceTree = "<group>"; };
 		F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashDefaults.swift; path = unleash/UnleashDefaults.swift; sourceTree = SOURCE_ROOT; };
 		F1EEDDC92346DDAF006BDCC1 /* UnleashSchedulerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashSchedulerSpec.swift; path = unleashTests/Utilities/UnleashSchedulerSpec.swift; sourceTree = SOURCE_ROOT; };
 		F1EEDDCE234BCA59006BDCC1 /* SchedulerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SchedulerMock.swift; path = unleashTests/Utilities/SchedulerMock.swift; sourceTree = SOURCE_ROOT; };
@@ -166,8 +165,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F188AA2B2356625300A84AC7 /* PMKFoundation.framework in Frameworks */,
-				F188AA2E2356625400A84AC7 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +292,7 @@
 		9DEA494322D7EE8C006FB13A = {
 			isa = PBXGroup;
 			children = (
+				F1A64D2E245BF2E700BDC769 /* Carthage.xcconfig */,
 				9DEA494F22D7EE8C006FB13A /* Unleash */,
 				9DEA495A22D7EE8C006FB13A /* UnleashTests */,
 				9D1C641622DD10650069FD45 /* UnleashSampleApp */,
@@ -636,6 +634,7 @@
 		};
 		9DEA495F22D7EE8C006FB13A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1A64D2E245BF2E700BDC769 /* Carthage.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -700,6 +699,7 @@
 		};
 		9DEA496022D7EE8C006FB13A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1A64D2E245BF2E700BDC769 /* Carthage.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -760,7 +760,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -774,11 +774,13 @@
 				);
 				INFOPLIST_FILE = Unleash/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.silvercar.Unleash;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = "";
@@ -786,8 +788,10 @@
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3,4";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				USE_HEADERMAP = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -795,7 +799,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -809,19 +813,23 @@
 				);
 				INFOPLIST_FILE = Unleash/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.silvercar.Unleash;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = "";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3,4";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				USE_HEADERMAP = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -829,22 +837,32 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZHL763PF34;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = UnleashTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.silvercar.UnleashTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SDKROOT = "";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator watchos watchsimulator appletvos appletvsimulator";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -852,22 +870,32 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ZHL763PF34;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = UnleashTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.silvercar.UnleashTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SDKROOT = "";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator watchos watchsimulator appletvos appletvsimulator";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
