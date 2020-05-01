@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name = 'Unleash'
+  s.name = 'UnleashClient'
   s.version = '1.0.6'
   s.license = 'MIT'
   s.summary = 'Feature Flagging for Swift'
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   s.swift_versions = ['4.2', '5.0', '5.1', '5.2']
 
-  s.source_files = 'Unleash/**/*.{swift}'
+  s.source_files = 'UnleashClient/**/*.{swift}'
 
   s.dependency 'PromiseKit', '~> 6.10'
 end
