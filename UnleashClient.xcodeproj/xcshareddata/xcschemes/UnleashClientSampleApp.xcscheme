@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9DEA494C22D7EE8C006FB13A"
-               BuildableName = "Unleash.framework"
-               BlueprintName = "Unleash"
-               ReferencedContainer = "container:unleash.xcodeproj">
+               BlueprintIdentifier = "9D1C641422DD10650069FD45"
+               BuildableName = "UnleashClientSampleApp.app"
+               BlueprintName = "UnleashClientSampleApp"
+               ReferencedContainer = "container:UnleashClient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,41 +26,18 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <CodeCoverageTargets>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9DEA494C22D7EE8C006FB13A"
-            BuildableName = "Unleash.framework"
-            BlueprintName = "Unleash"
-            ReferencedContainer = "container:unleash.xcodeproj">
-         </BuildableReference>
-      </CodeCoverageTargets>
-      <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9DEA495522D7EE8C006FB13A"
-               BuildableName = "UnleashTests.xctest"
-               BlueprintName = "UnleashTests"
-               ReferencedContainer = "container:unleash.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9DEA494C22D7EE8C006FB13A"
-            BuildableName = "Unleash.framework"
-            BlueprintName = "Unleash"
-            ReferencedContainer = "container:unleash.xcodeproj">
+            BlueprintIdentifier = "9D1C641422DD10650069FD45"
+            BuildableName = "UnleashClientSampleApp.app"
+            BlueprintName = "UnleashClientSampleApp"
+            ReferencedContainer = "container:UnleashClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -72,17 +49,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9DEA494C22D7EE8C006FB13A"
-            BuildableName = "Unleash.framework"
-            BlueprintName = "Unleash"
-            ReferencedContainer = "container:unleash.xcodeproj">
+            BlueprintIdentifier = "9D1C641422DD10650069FD45"
+            BuildableName = "UnleashClientSampleApp.app"
+            BlueprintName = "UnleashClientSampleApp"
+            ReferencedContainer = "container:UnleashClient.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -90,15 +66,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9DEA494C22D7EE8C006FB13A"
-            BuildableName = "Unleash.framework"
-            BlueprintName = "Unleash"
-            ReferencedContainer = "container:unleash.xcodeproj">
+            BlueprintIdentifier = "9D1C641422DD10650069FD45"
+            BuildableName = "UnleashClientSampleApp.app"
+            BlueprintName = "UnleashClientSampleApp"
+            ReferencedContainer = "container:UnleashClient.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
