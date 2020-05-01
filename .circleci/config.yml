@@ -2,31 +2,39 @@ version: 2
 jobs:
   unit-test:
     macos:
-      xcode: "10.2.0"
+      xcode: "11.4.1"
     steps:
       - checkout
+      - restore_cache:
+          key: gems-v1--{{ checksum "Gemfile.lock" }}
       - run:
-          name: Install Danger
+          name: Install Gems
           command: |
-            sudo gem install danger
-            if (brew outdated | grep carthage > /dev/null); then brew upgrade carthage; fi
+            bundle install --path vendor/bundle --quiet
+      - save_cache:
+          key: gems-v1--{{ checksum "Gemfile.lock" }}
+          paths:
+            - "vendor/bundle"
+      - run:
+          name: Update Carthage If Needed
+          command: if (brew outdated | grep carthage > /dev/null); then brew upgrade carthage; fi
       - run:
           name: Run Danager
-          command: danger
+          command: bundle exec danger
       - restore_cache:
-          key: carthage-v1--{{ checksum "Cartfile.resolved" }}
+          key: carthage-v2--{{ checksum "Cartfile.resolved" }}
       - run:
           name: Carthage
           command: ./bin/bootstrap-if-needed
       - save_cache:
-          key: carthage-v1--{{ checksum "Cartfile.resolved" }}
+          key: carthage-v2--{{ checksum "Cartfile.resolved" }}
           paths:
             - "./Carthage"
       - run:
-          name: execute tests
+          name: Execute Tests
           command: |
             mkdir -p ~/test-results/xctest/
-            fastlane scan --scheme "Unleash" --device "iPhone X" --clean --output_directory="~/test-results/xctest/" --output_types="junit" --output_files="junit.xml" --code_coverage
+            bundle exec fastlane scan --scheme "UnleashClient" --device "iPhone X" --clean --output_directory="~/test-results/xctest/" --output_types="junit" --output_files="junit.xml" --code_coverage
       - run:
           name: Codecov
           command: bash <(curl -s https://codecov.io/bash)
