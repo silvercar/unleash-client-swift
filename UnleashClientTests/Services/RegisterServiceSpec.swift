@@ -11,7 +11,7 @@ import OHHTTPStubs.Swift
 import PromiseKit
 import Quick
 
-@testable import Unleash
+@testable import UnleashClient
 
 class RegisterServiceSpec : QuickSpec {
     override func spec() {

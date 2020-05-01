@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import Unleash
+@testable import UnleashClient
 
 class SchedulerMock: UnleashScheduler {}
 

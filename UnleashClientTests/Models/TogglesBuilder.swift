@@ -5,7 +5,7 @@
 //  Copyright © 2019 Silvercar. All rights reserved.
 //
 
-@testable import Unleash
+@testable import UnleashClient
 import Foundation
 
 class TogglesBuilder {

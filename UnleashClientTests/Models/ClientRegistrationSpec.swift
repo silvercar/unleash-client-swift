@@ -9,7 +9,7 @@ import Foundation
 import Nimble
 import Quick
 
-@testable import Unleash
+@testable import UnleashClient
 
 class ClientRegistrationSpec: QuickSpec {
     override func spec() {

@@ -9,7 +9,7 @@ import Foundation
 import Nimble
 import Quick
 
-@testable import Unleash
+@testable import UnleashClient
 
 class DefaultStrategySpec: QuickSpec {
     override func spec() {

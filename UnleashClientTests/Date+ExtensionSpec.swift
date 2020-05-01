@@ -9,7 +9,7 @@ import Foundation
 import Nimble
 import Quick
 
-@testable import Unleash
+@testable import UnleashClient
 
 class DateExtensionSpec: QuickSpec {
     override func spec() {

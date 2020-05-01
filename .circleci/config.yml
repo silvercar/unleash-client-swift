@@ -22,12 +22,12 @@ jobs:
           name: Run Danager
           command: bundle exec danger
       - restore_cache:
-          key: carthage-v1--{{ checksum "Cartfile.resolved" }}
+          key: carthage-v2--{{ checksum "Cartfile.resolved" }}
       - run:
           name: Carthage
           command: ./bin/bootstrap-if-needed
       - save_cache:
-          key: carthage-v1--{{ checksum "Cartfile.resolved" }}
+          key: carthage-v2--{{ checksum "Cartfile.resolved" }}
           paths:
             - "./Carthage"
       - run:

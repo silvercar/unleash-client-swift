@@ -10,7 +10,7 @@ import Nimble
 import PromiseKit
 import Quick
 
-@testable import Unleash
+@testable import UnleashClient
 
 class ToggleRepositorySpec: QuickSpec {
     override func spec() {

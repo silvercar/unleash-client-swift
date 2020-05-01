@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Unleash
+import UnleashClient
 
 struct Constants {
   // This constant is to emulate a client knowing its target environment is (e.g. qa, stage, production)
