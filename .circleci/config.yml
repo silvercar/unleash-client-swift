@@ -1,8 +1,8 @@
 version: 2
 jobs:
-  unit-test:
+  run-unit-test:
     macos:
-      xcode: "11.4.1"
+      xcode: "12.0.0"
     steps:
       - checkout
       - restore_cache:
@@ -22,14 +22,14 @@ jobs:
           name: Run Danager
           command: bundle exec danger
       - restore_cache:
-          key: carthage-v2--{{ checksum "Cartfile.resolved" }}
+          key: carthage-v3--{{ checksum "Cartfile.resolved" }}
       - run:
           name: Carthage
           command: ./bin/bootstrap-if-needed
       - save_cache:
-          key: carthage-v2--{{ checksum "Cartfile.resolved" }}
+          key: carthage-v3--{{ checksum "Cartfile.resolved" }}
           paths:
-            - "./Carthage"
+            - "Carthage/"
       - run:
           name: Execute Tests
           command: |
@@ -61,6 +61,4 @@ workflows:
   build-workflow:
     jobs:
       - swiftlint
-      - unit-test:
-          requires:
-            - swiftlint
+      - run-unit-test
