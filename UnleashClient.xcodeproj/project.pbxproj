@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,8 +19,6 @@
 		9D1C642E22DE80220069FD45 /* DefaultStrategySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C642D22DE80220069FD45 /* DefaultStrategySpec.swift */; };
 		9D1C643022DEB5480069FD45 /* UnleashSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C642F22DEB5480069FD45 /* UnleashSpec.swift */; };
 		9D1C643322DEB88B0069FD45 /* RegisterServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C643222DEB88B0069FD45 /* RegisterServiceMock.swift */; };
-		9D1C643A22DF7C1F0069FD45 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C643922DF7C1F0069FD45 /* OHHTTPStubs.framework */; };
-		9D1C643B22DF7C2A0069FD45 /* OHHTTPStubs.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D1C643922DF7C1F0069FD45 /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D1C644222DF92E80069FD45 /* RegisterServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C644122DF92E80069FD45 /* RegisterServiceSpec.swift */; };
 		9D1C644422DF93900069FD45 /* ClientRegistrationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C644322DF93900069FD45 /* ClientRegistrationBuilder.swift */; };
 		9D1C644E22DFB87A0069FD45 /* DebugLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C644D22DFB87A0069FD45 /* DebugLogger.swift */; };
@@ -31,10 +29,6 @@
 		9D2C1CB522D9784F00721A2D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CB422D9784F00721A2D /* Date+Extension.swift */; };
 		9D2C1CB822D9787C00721A2D /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CB722D9787C00721A2D /* AppInfo.swift */; };
 		9D2C1CC022D97B8000721A2D /* Date+ExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CBF22D97B8000721A2D /* Date+ExtensionSpec.swift */; };
-		9D2C1CC122D97F2900721A2D /* PMKFoundation.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9D2C1CC222D97F2900721A2D /* PromiseKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9D2C1CC322D97F3F00721A2D /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		9D2C1CC422D97F3F00721A2D /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */; };
 		9D2C1CCC22D9878F00721A2D /* ClientRegistrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CCB22D9878F00721A2D /* ClientRegistrationSpec.swift */; };
 		9D2C1CCF22D99A0D00721A2D /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C1CCE22D99A0D00721A2D /* RegisterService.swift */; };
 		9D2FBD28230EFEEE000BAAF9 /* FeatureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FBD27230EFEEE000BAAF9 /* FeatureBuilder.swift */; };
@@ -42,16 +36,11 @@
 		9D2FBD2C230F05B5000BAAF9 /* ActivationStrategyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FBD2B230F05B5000BAAF9 /* ActivationStrategyBuilder.swift */; };
 		9D2FBD2E230F167F000BAAF9 /* VariantOverrideBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FBD2D230F167F000BAAF9 /* VariantOverrideBuilder.swift */; };
 		9D2FBD30230F16CD000BAAF9 /* VariantDefinitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FBD2F230F16CD000BAAF9 /* VariantDefinitionBuilder.swift */; };
-		9D6D41FD22D7F011005D36A3 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6D41FC22D7F011005D36A3 /* Nimble.framework */; };
-		9D6D41FF22D7F01F005D36A3 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6D41FE22D7F01F005D36A3 /* Quick.framework */; };
-		9D6D420122D7F043005D36A3 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D6D41FE22D7F01F005D36A3 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9D6D420222D7F043005D36A3 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D6D41FC22D7F011005D36A3 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D76064D2314258C00B4217F /* MemoryCacheSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D76064C2314258C00B4217F /* MemoryCacheSpec.swift */; };
 		9D7606572314D2FE00B4217F /* ToggleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7606562314D2FE00B4217F /* ToggleRepository.swift */; };
 		9D7606592314D3D200B4217F /* ToggleRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7606582314D3D200B4217F /* ToggleRepositorySpec.swift */; };
 		9D76065F2315DB5E00B4217F /* ToggleRespositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D76065E2315DB5E00B4217F /* ToggleRespositoryMock.swift */; };
 		9D7606612316172600B4217F /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7606602316172600B4217F /* TestError.swift */; };
-		9DEA495722D7EE8C006FB13A /* UnleashClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEA494D22D7EE8C006FB13A /* UnleashClient.framework */; };
 		9DEA495E22D7EE8C006FB13A /* Unleash.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DEA495022D7EE8C006FB13A /* Unleash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F10E5DE5245C795600D2CFB0 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E5DDE245C795600D2CFB0 /* Feature.swift */; };
 		F10E5DE6245C795600D2CFB0 /* ClientRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E5DDF245C795600D2CFB0 /* ClientRegistration.swift */; };
@@ -61,6 +50,15 @@
 		F10E5DEA245C795600D2CFB0 /* Toggles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E5DE3245C795600D2CFB0 /* Toggles.swift */; };
 		F10E5DEB245C795600D2CFB0 /* VariantOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10E5DE4245C795600D2CFB0 /* VariantOverride.swift */; };
 		F136C3B1233E73B200504CC1 /* UnleashScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */; };
+		F19F8FA527BC3D2A00094987 /* PMKFoundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F8FA327BC3D2A00094987 /* PMKFoundation.xcframework */; };
+		F19F8FA627BC3D2A00094987 /* PMKFoundation.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F19F8FA327BC3D2A00094987 /* PMKFoundation.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F19F8FA727BC3D2A00094987 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F8FA427BC3D2A00094987 /* PromiseKit.xcframework */; };
+		F19F8FA827BC3D2A00094987 /* PromiseKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F19F8FA427BC3D2A00094987 /* PromiseKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F19F8FAA27BC3D5700094987 /* PMKFoundation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F8FA327BC3D2A00094987 /* PMKFoundation.xcframework */; };
+		F19F8FAB27BC3D5700094987 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F8FA427BC3D2A00094987 /* PromiseKit.xcframework */; };
+		F19F8FAF27BC3D7300094987 /* OHHTTPStubs.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F8FAC27BC3D7300094987 /* OHHTTPStubs.xcframework */; };
+		F19F8FB027BC3D7300094987 /* Nimble.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F8FAD27BC3D7300094987 /* Nimble.xcframework */; };
+		F19F8FB127BC3D7300094987 /* Quick.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F8FAE27BC3D7300094987 /* Quick.xcframework */; };
 		F1EEDDC72346D465006BDCC1 /* UnleashDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */; };
 		F1EEDDCA2346DDAF006BDCC1 /* UnleashSchedulerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDC92346DDAF006BDCC1 /* UnleashSchedulerSpec.swift */; };
 		F1EEDDCF234BCA59006BDCC1 /* SchedulerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EEDDCE234BCA59006BDCC1 /* SchedulerMock.swift */; };
@@ -83,12 +81,19 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9D1C643B22DF7C2A0069FD45 /* OHHTTPStubs.framework in CopyFiles */,
-				9D2C1CC122D97F2900721A2D /* PMKFoundation.framework in CopyFiles */,
-				9D2C1CC222D97F2900721A2D /* PromiseKit.framework in CopyFiles */,
-				9D6D420122D7F043005D36A3 /* Quick.framework in CopyFiles */,
-				9D6D420222D7F043005D36A3 /* Nimble.framework in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F19F8FA927BC3D2A00094987 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F19F8FA827BC3D2A00094987 /* PromiseKit.xcframework in Embed Frameworks */,
+				F19F8FA627BC3D2A00094987 /* PMKFoundation.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -146,6 +151,11 @@
 		F10E5DE3245C795600D2CFB0 /* Toggles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toggles.swift; sourceTree = "<group>"; };
 		F10E5DE4245C795600D2CFB0 /* VariantOverride.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariantOverride.swift; sourceTree = "<group>"; };
 		F136C3B0233E73B200504CC1 /* UnleashScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashScheduler.swift; path = UnleashClient/Utilities/UnleashScheduler.swift; sourceTree = SOURCE_ROOT; };
+		F19F8FA327BC3D2A00094987 /* PMKFoundation.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PMKFoundation.xcframework; path = Carthage/Build/PMKFoundation.xcframework; sourceTree = "<group>"; };
+		F19F8FA427BC3D2A00094987 /* PromiseKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromiseKit.xcframework; path = Carthage/Build/PromiseKit.xcframework; sourceTree = "<group>"; };
+		F19F8FAC27BC3D7300094987 /* OHHTTPStubs.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OHHTTPStubs.xcframework; path = Carthage/Build/OHHTTPStubs.xcframework; sourceTree = "<group>"; };
+		F19F8FAD27BC3D7300094987 /* Nimble.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Nimble.xcframework; path = Carthage/Build/Nimble.xcframework; sourceTree = "<group>"; };
+		F19F8FAE27BC3D7300094987 /* Quick.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Quick.xcframework; path = Carthage/Build/Quick.xcframework; sourceTree = "<group>"; };
 		F1A64D2E245BF2E700BDC769 /* Carthage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Carthage.xcconfig; sourceTree = "<group>"; };
 		F1EEDDC62346D465006BDCC1 /* UnleashDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashDefaults.swift; path = UnleashClient/UnleashDefaults.swift; sourceTree = SOURCE_ROOT; };
 		F1EEDDC92346DDAF006BDCC1 /* UnleashSchedulerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnleashSchedulerSpec.swift; path = UnleashClientTests/Utilities/UnleashSchedulerSpec.swift; sourceTree = SOURCE_ROOT; };
@@ -165,6 +175,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F19F8FA727BC3D2A00094987 /* PromiseKit.xcframework in Frameworks */,
+				F19F8FA527BC3D2A00094987 /* PMKFoundation.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,12 +184,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D1C643A22DF7C1F0069FD45 /* OHHTTPStubs.framework in Frameworks */,
-				9D2C1CC322D97F3F00721A2D /* PMKFoundation.framework in Frameworks */,
-				9D2C1CC422D97F3F00721A2D /* PromiseKit.framework in Frameworks */,
-				9D6D41FF22D7F01F005D36A3 /* Quick.framework in Frameworks */,
-				9D6D41FD22D7F011005D36A3 /* Nimble.framework in Frameworks */,
-				9DEA495722D7EE8C006FB13A /* UnleashClient.framework in Frameworks */,
+				F19F8FAA27BC3D5700094987 /* PMKFoundation.xcframework in Frameworks */,
+				F19F8FAB27BC3D5700094987 /* PromiseKit.xcframework in Frameworks */,
+				F19F8FAF27BC3D7300094987 /* OHHTTPStubs.xcframework in Frameworks */,
+				F19F8FB027BC3D7300094987 /* Nimble.xcframework in Frameworks */,
+				F19F8FB127BC3D7300094987 /* Quick.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +283,11 @@
 		9D6D41FB22D7F011005D36A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F19F8FAD27BC3D7300094987 /* Nimble.xcframework */,
+				F19F8FAC27BC3D7300094987 /* OHHTTPStubs.xcframework */,
+				F19F8FAE27BC3D7300094987 /* Quick.xcframework */,
+				F19F8FA327BC3D2A00094987 /* PMKFoundation.xcframework */,
+				F19F8FA427BC3D2A00094987 /* PromiseKit.xcframework */,
 				9D1C643922DF7C1F0069FD45 /* OHHTTPStubs.framework */,
 				9D2C1CAB22D95B5F00721A2D /* PMKFoundation.framework */,
 				9D2C1CAC22D95B5F00721A2D /* PromiseKit.framework */,
@@ -412,6 +428,7 @@
 				9DEA494822D7EE8C006FB13A /* Headers */,
 				9DEA494A22D7EE8C006FB13A /* Frameworks */,
 				9DEA494922D7EE8C006FB13A /* Sources */,
+				F19F8FA927BC3D2A00094987 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-carthage bootstrap --platform ios
+carthage bootstrap --platform ios --use-xcframeworks
 cp Cartfile.resolved Carthage
