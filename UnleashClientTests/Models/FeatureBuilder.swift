@@ -25,7 +25,7 @@ class FeatureBuilder {
         let strategy: ActivationStrategy = ActivationStrategyBuilder().withName(name: "default").build()
         let variant: VariantDefinition = VariantDefinitionBuilder().build()
         
-        return Feature(name: name, description: "Feature one", enabled: isEnabled, strategies: [strategy],
+        return Feature(name: name, enabled: isEnabled, strategies: [strategy],
                        variants: [variant], createdAt: "2019-06-05T19:22:36.027Z")
     }
 }
