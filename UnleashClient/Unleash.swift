@@ -45,7 +45,8 @@ public class Unleash {
     appName: String,
     url: String,
     refreshInterval: TimeInterval = 3600,
-    strategies: [Strategy] = []
+    strategies: [Strategy] = [],
+    delegate: UnleashDelegate? = nil
   ) {
     let clientRegistration: ClientRegistration = ClientRegistration(appName: appName, strategies: strategies)
     let registerService: RegisterServiceProtocol = RegisterService()
@@ -61,7 +62,8 @@ public class Unleash {
       appName: appName,
       url: url,
       refreshInterval: refreshInterval,
-      strategies: allStrategies)
+      strategies: allStrategies,
+      delegate: delegate)
   }
   
   // MARK: - Internal Init
@@ -73,7 +75,8 @@ public class Unleash {
     url: String,
     refreshInterval: TimeInterval,
     strategies: [Strategy],
-    scheduler: Scheduler? = nil
+    scheduler: Scheduler? = nil,
+    delegate: UnleashDelegate? = nil
   ) {
     self.registerService = registerService
     self.toggleRepository = toggleRepository
@@ -81,6 +84,7 @@ public class Unleash {
     self.url = url
     self.refreshInterval = refreshInterval
     self.strategies = strategies
+    self.delegate = delegate
     
     if let scheduler = scheduler {
       self.scheduler = scheduler
@@ -97,7 +101,9 @@ public class Unleash {
     register(body: client)
     .then { response -> Promise<Void> in
       self.scheduler.do {
-        _ = self.fetchToggles().done { self.delegate?.unleashDidLoad(self) }
+        _ = self.fetchToggles()
+          .done { self.delegate?.unleashDidLoad(self) }
+          .catch { self.delegate?.unleashDidFail(self, withError: $0) }
       }
       self.scheduler.resume()
       return .value(())

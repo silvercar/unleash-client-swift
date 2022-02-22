@@ -39,8 +39,8 @@ class ViewController: UIViewController {
       appName: Constants.appName,
       url: Constants.unleashUrl,
       refreshInterval: 10,
-      strategies: [EnvironmentStrategy()])
-    unleash.delegate = self
+      strategies: [EnvironmentStrategy()],
+      delegate: self)
   }
   
   private func refresh() {
@@ -57,12 +57,15 @@ extension ViewController: UnleashDelegate {
     refresh()
   }
   
-  func unleashDidFail(_ unleash: Unleash, withError error: Error) {
+  func unleashDidFail(
+    _ unleash: Unleash,
+    withError error: Error
+  ) {
     let alertController = UIAlertController(
       title: Constants.errorTitle,
       message: error.localizedDescription,
       preferredStyle: .alert)
-    
+
     let action = UIAlertAction(title: "OK", style: .default, handler: nil)
     alertController.addAction(action)
     present(alertController, animated: true, completion: nil)
