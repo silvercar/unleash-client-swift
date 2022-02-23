@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'UnleashClient'
-  s.version = '1.0.6'
+  s.version = '1.0.7'
   s.license = 'MIT'
   s.summary = 'Feature Flagging for Swift'
   s.homepage = 'https://github.com/silvercar/unleash-client-swift'
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '3.0'
   s.tvos.deployment_target    = '10.0'
 
-  s.swift_versions = ['4.2', '5.0', '5.1', '5.2']
+  s.swift_versions = ['4.2', '5.0', '5.1', '5.2', '5.3', '5.4', '5.5']
 
   s.source_files = 'UnleashClient/**/*.{swift}'
 
