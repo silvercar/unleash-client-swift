@@ -7,7 +7,8 @@
 
 import Foundation
 import Nimble
-import OHHTTPStubs.Swift
+import OHHTTPStubs
+import OHHTTPStubsSwift
 import PromiseKit
 import Quick
 
@@ -20,7 +21,7 @@ class RegisterServiceSpec : QuickSpec {
         }
         
         afterEach {
-            OHHTTPStubs.removeAllStubs()
+            HTTPStubs.removeAllStubs()
         }
         
         describe("#register") {
@@ -32,7 +33,7 @@ class RegisterServiceSpec : QuickSpec {
                 
                 beforeEach {
                     stub(condition: { $0.url!.absoluteString == registerUrl }, response: { _ in
-                        OHHTTPStubsResponse(jsonObject: json, statusCode: 200, headers: nil)
+                        HTTPStubsResponse(jsonObject: json, statusCode: 200, headers: nil)
                     })
                 }
                 
@@ -72,7 +73,7 @@ class RegisterServiceSpec : QuickSpec {
             context("when registered") {
                 beforeEach {
                     stub(condition: { $0.url!.absoluteString == registerUrl }, response: { _ in
-                        OHHTTPStubsResponse(data: "".data(using: String.Encoding.utf8)!, statusCode: 202, headers: nil)
+                        HTTPStubsResponse(data: "".data(using: String.Encoding.utf8)!, statusCode: 202, headers: nil)
                     })
                 }
                 
