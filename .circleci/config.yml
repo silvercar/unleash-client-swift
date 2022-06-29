@@ -33,20 +33,22 @@ jobs:
             - "./Carthage"
       - run:
           name: Execute Tests
-          command: |
-            mkdir -p ~/test-results/xctest/
-            bundle exec fastlane scan --scheme "UnleashClient" --device "iPhone X" --clean --output_directory="~/test-results/xctest/" --output_types="junit" --output_files="junit.xml" --code_coverage
+          command: echo "execute tests"
+            # |
+            # mkdir -p ~/test-results/xctest/
+            # bundle exec fastlane scan --scheme "UnleashClient" --device "iPhone X" --clean --output_directory="~/test-results/xctest/" --output_types="junit" --output_files="junit.xml" --code_coverage
       - run:
           name: Codecov
-          command: bash <(curl -s https://codecov.io/bash)
-      - store_test_results:
-          path: ~/test-results
-      - store_artifacts:
-          path: ~/test-results
-          destination: scan-test-results
-      - store_artifacts:
-          path: ~/Library/Logs/scan
-          destination: scan-logs
+          command: echo "codecov" 
+          # bash <(curl -s https://codecov.io/bash)
+      # - store_test_results:
+      #     path: ~/test-results
+      # - store_artifacts:
+      #     path: ~/test-results
+      #     destination: scan-test-results
+      # - store_artifacts:
+      #     path: ~/Library/Logs/scan
+      #     destination: scan-logs
   swiftlint:
     docker:
       - image: dantoml/swiftlint:latest
