@@ -120,10 +120,10 @@ public class Unleash {
     _ = registerService.register(url: url, body: body)
     .tap({ result in
       switch result {
-      case .fulfilled(let response):
+      case .success(let response):
          log("Unleash registered client \(body.instanceId) with response \(response ?? [:])")
         completion(nil)
-      case .rejected(let error):
+      case .failure(let error):
         completion(error)
       }
     })
@@ -145,9 +145,9 @@ public class Unleash {
     _ = toggleRepository.get(url: url)
     .tap { result in
       switch result {
-      case .fulfilled(_):
+      case .success(_):
         completion(nil)
-      case .rejected(let error):
+      case .failure(let error):
         completion(error)
       }
     }
