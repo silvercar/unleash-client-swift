@@ -1,0 +1,4 @@
+module OHHTTPStubs {
+    umbrella "/Users/nasirahmedmomin/Documents/Source Code/DW/Unleash-client-swift/unleash-client-swift/.build/checkouts/OHHTTPStubs/Sources/OHHTTPStubs/include"
+    export *
+}
