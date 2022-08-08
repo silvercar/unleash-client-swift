@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -30,14 +30,14 @@ let package = Package(
         .target(
             name: "UnleashClient",
             dependencies: [.product(name: "PMKFoundation", package: "PromiseKit")
-            ], path: "UnleashClient"),
+            ], path: "./Source/UnleashClientPackage"),
         .testTarget(
             name: "unleash-client-swiftTests",
             dependencies: ["UnleashClient",
                            "Quick",
-                           "OHHTTPStubsSwift",
+                           .product(name: "OHHTTPStubsSwift", package: "OHHTTPStubs"),
                            "Nimble"],
-            path: "UnleashClientTests"),
+            path: "./Tests/UnleashClientTests"),
             
     ]
 )
