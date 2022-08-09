@@ -19,8 +19,8 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/mxcl/PromiseKit",  from: "7.0.0-rc1"),
-        .package(url: "https://github.com/Quick/Quick", from: "4.0.0"),
-        .package(url: "https://github.com/Quick/Nimble", from: "9.2.0"),
+        .package(url: "https://github.com/Quick/Quick", from: "5.0.0"),
+        .package(url: "https://github.com/Quick/Nimble", from: "10.0.0"),
         .package(url: "https://github.com/AliSoftware/OHHTTPStubs.git", .upToNextMajor(from: "9.0.0"))
         
     ],
