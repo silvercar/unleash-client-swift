@@ -1,0 +1,4 @@
+module CwlCatchExceptionSupport {
+    umbrella "/Users/nasirahmedmomin/Documents/Source Code/DW/Unleash-client-swift/unleash-client-swift/.build/checkouts/CwlCatchException/Sources/CwlCatchExceptionSupport/include"
+    export *
+}
